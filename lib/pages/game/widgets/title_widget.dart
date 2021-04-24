@@ -42,19 +42,22 @@ class TitleWidget extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  "aguardando.",
+                  "aguardando",
                   style: AppTextStyles.headingGame,
                 ),
-                AnimatedTextKit(
-                  isRepeatingAnimation: true,
-                  repeatForever: true,
-                  animatedTexts: [
-                    TyperAnimatedText(
-                      '..',
-                      textStyle: AppTextStyles.headingGame,
-                      speed: const Duration(milliseconds: 800),
-                    ),
-                  ],
+                SizedBox(
+                  width: 20,
+                  child: AnimatedTextKit(
+                    isRepeatingAnimation: true,
+                    repeatForever: true,
+                    animatedTexts: [
+                      TyperAnimatedText(
+                        '...',
+                        textStyle: AppTextStyles.headingGame,
+                        speed: const Duration(milliseconds: 650),
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),
