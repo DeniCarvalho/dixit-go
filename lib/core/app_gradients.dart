@@ -7,8 +7,8 @@ class AppGradients {
   static final linear = LinearGradient(colors: [
     // Color(0xFF181617).withOpacity(.94),
     // Color(0xFF181617),
-    Color(0xFF332E2D),
-    Color(0xFF181617),
+    Color(0xFFF1A382),
+    Color(0xFFffffff),
   ], stops: [
     0.0,
     0.695

@@ -6,7 +6,7 @@ class LogoComponent extends StatelessWidget {
   final double top;
   LogoComponent({
     this.height = 50,
-    this.top = 30,
+    this.top = 0,
   });
 
   @override

@@ -17,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
 
   load() async {
     await Future.delayed(new Duration(seconds: 4));
-    Navigator.pushNamed(context, '/home');
+    Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => true);
   }
 
   @override
@@ -42,7 +42,7 @@ class _SplashPageState extends State<SplashPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                child: LogoComponent(height: 80),
+                child: LogoComponent(height: 100, top: 30,),
               ),
             ],
           ),

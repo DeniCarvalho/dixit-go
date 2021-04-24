@@ -4,93 +4,104 @@ import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 
 class AppTextStyles {
-    static final TextStyle titleBanner = GoogleFonts.notoSans(
-    color: AppColors.white,
+  static final TextStyle titleBanner = GoogleFonts.notoSans(
+    color: Colors.white,
     fontSize: 30,
     fontWeight: FontWeight.w500,
   );
-    static final TextStyle subtitleBanner = GoogleFonts.notoSans(
-    color: AppColors.white,
-    fontSize: 25,
+  static final TextStyle subtitleBanner = GoogleFonts.notoSans(
+    color: Colors.white,
+    fontSize: 22,
     fontWeight: FontWeight.w500,
   );
   static final TextStyle title = GoogleFonts.notoSans(
-    color: AppColors.white,
+    color: Colors.white,
     fontSize: 20,
     fontWeight: FontWeight.w400,
   );
 
   static final TextStyle titleBold = GoogleFonts.notoSans(
-    color: AppColors.white,
+    color: Colors.white,
     fontSize: 20,
     fontWeight: FontWeight.w600,
   );
 
+  static final TextStyle headingGame = GoogleFonts.notoSans(
+    color: Colors.white,
+    fontSize: 22,
+    fontWeight: FontWeight.w600,
+  );
+
   static final TextStyle heading = GoogleFonts.notoSans(
-    color: AppColors.black,
+    color: Colors.black,
     fontSize: 18,
     fontWeight: FontWeight.w600,
   );
 
   static final TextStyle heading40 = GoogleFonts.notoSans(
-    color: AppColors.black,
+    color: Colors.black,
     fontSize: 40,
     fontWeight: FontWeight.w600,
   );
 
   static final TextStyle heading15 = GoogleFonts.notoSans(
-    color: AppColors.black,
+    color: Colors.black,
     fontSize: 15,
     fontWeight: FontWeight.w600,
   );
 
   static final TextStyle body = GoogleFonts.notoSans(
-    color: AppColors.grey,
+    color: Colors.grey,
     fontSize: 13,
     fontWeight: FontWeight.normal,
   );
 
   static final TextStyle bodyBold = GoogleFonts.notoSans(
-    color: AppColors.grey,
+    color: Colors.grey,
     fontSize: 13,
     fontWeight: FontWeight.bold,
   );
 
   static final TextStyle bodylightGrey = GoogleFonts.notoSans(
-    color: AppColors.lightGreen,
+    color: Colors.lightGreen,
     fontSize: 13,
     fontWeight: FontWeight.normal,
   );
   static final TextStyle bodyDarkGreen = GoogleFonts.notoSans(
-    color: AppColors.darkGreen,
+    color: Colors.grey,
     fontSize: 13,
     fontWeight: FontWeight.w500,
   );
 
   static final TextStyle bodyDarkRed = GoogleFonts.notoSans(
-    color: AppColors.darkRed,
+    color: Colors.red,
     fontSize: 13,
     fontWeight: FontWeight.w500,
   );
 
   static final TextStyle body20 = GoogleFonts.notoSans(
-    color: AppColors.grey,
+    color: Colors.grey,
     fontSize: 20,
     fontWeight: FontWeight.normal,
   );
   static final TextStyle bodyLightGrey20 = GoogleFonts.notoSans(
-    color: AppColors.lightGrey,
+    color: Colors.grey,
     fontSize: 20,
     fontWeight: FontWeight.normal,
   );
 
   static final TextStyle bodyWhite20 = GoogleFonts.notoSans(
-    color: AppColors.white,
+    color: Colors.white,
     fontSize: 20,
     fontWeight: FontWeight.normal,
   );
+  static final TextStyle bodyWhite15 = GoogleFonts.notoSans(
+    color: Colors.white,
+    fontSize: 15,
+    fontWeight: FontWeight.normal,
+  );
   static final TextStyle body11 = GoogleFonts.notoSans(
-    color: AppColors.grey,
+    color: Colors.grey,
     fontSize: 11,
     fontWeight: FontWeight.normal,
   );

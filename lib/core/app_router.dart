@@ -1,5 +1,6 @@
-import 'package:dixit_go/home/home_page.dart';
-import 'package:dixit_go/splash/splash_page.dart';
+import 'package:dixit_go/pages/game/join/join_page.dart';
+import 'package:dixit_go/pages/home/home_page.dart';
+import 'package:dixit_go/pages/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'app_transaction_fade.dart';
 import 'app_widget.dart';
@@ -17,6 +18,12 @@ class AppRouter {
       // var args = settings.arguments;
       return AppTransactionFade(
         page: HomePage(),
+      );
+    }
+    if (settings.name == '/game/join') {
+      // var args = settings.arguments;
+      return AppTransactionFade(
+        page: JoinPage(),
       );
     }
     assert(false, 'Need to implement ${settings.name}');

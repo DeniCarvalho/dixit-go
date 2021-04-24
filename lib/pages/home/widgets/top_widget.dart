@@ -1,8 +1,9 @@
 import 'package:dixit_go/components/avatar_component.dart';
+import 'package:dixit_go/components/logo_component.dart';
 import 'package:flutter/material.dart';
-import 'package:dixit_go/core/core.dart';
 
 class TopWidget extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,10 +16,7 @@ class TopWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              'Dixit Go!',
-              style: AppTextStyles.title,
-            ),
+            LogoComponent(height: 50),
             AvatarComponent(),
           ],
         ),

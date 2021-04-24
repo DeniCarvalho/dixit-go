@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:dixit_go/core/core.dart';
+import 'package:dixit_go/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 class CenterWidget extends StatefulWidget {
@@ -10,6 +11,11 @@ class CenterWidget extends StatefulWidget {
 class _CenterWidgetState extends State<CenterWidget> {
   bool startFirst = false;
   bool startSecond = false;
+  final UserModel userModel = new UserModel(
+    name: "Denisson Carvalho",
+    username: "deniicarvalho",
+    email: "denii.carvalho94@gmail.com",
+  );
 
   @override
   void initState() {
@@ -39,7 +45,7 @@ class _CenterWidgetState extends State<CenterWidget> {
                     repeatForever: false,
                     animatedTexts: [
                       TyperAnimatedText(
-                        'olá Denisson,',
+                        'olá ${userModel.firstName()},',
                         textStyle: AppTextStyles.titleBanner,
                         speed: const Duration(milliseconds: 50),
                       ),
@@ -57,7 +63,7 @@ class _CenterWidgetState extends State<CenterWidget> {
                     repeatForever: false,
                     animatedTexts: [
                       TyperAnimatedText(
-                        'bora usar a imaginação?',
+                        'pronto para usar a imaginação?',
                         textStyle: AppTextStyles.subtitleBanner,
                         speed: const Duration(milliseconds: 50),
                       ),

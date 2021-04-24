@@ -24,9 +24,11 @@ class _AppWidgetState extends State<AppWidget> {
     precacheImage(AssetImage(AppImages.avatar4), context);
     precacheImage(AssetImage(AppImages.avatar5), context);
     precacheImage(AssetImage(AppImages.avatar6), context);
+    precacheImage(AssetImage(AppImages.bgRepeat), context);
+
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      systemNavigationBarColor: AppColors.primary, // navigation bar color
+      systemNavigationBarColor: Colors.black, // navigation bar color
       statusBarColor: Colors.transparent, // status bar color
       statusBarIconBrightness: Brightness.light, // status bar icons' color
       systemNavigationBarIconBrightness:
