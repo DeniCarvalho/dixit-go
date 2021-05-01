@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   load() async {
-    await Future.delayed(new Duration(seconds: 1));
+    await Future.delayed(new Duration(milliseconds: 800));
     setState(() {
       _visible = true;
     });
@@ -42,18 +42,18 @@ class _HomePageState extends State<HomePage> {
               ).image,
             ),
           ),
-          AnimatedOpacity(
-            opacity: _visible ? 1.0 : 0.0,
-            duration: Duration(milliseconds: 500),
-            child: new Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                TopWidget(),
-                CenterWidget(),
-                BottomWidget(),
-              ],
-            ),
+          new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              TopWidget(),
+              CenterWidget(
+                visible: _visible,
+              ),
+              BottomWidget(
+                visible: _visible,
+              ),
+            ],
           ),
         ],
       ),

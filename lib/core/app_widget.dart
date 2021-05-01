@@ -17,15 +17,24 @@ class AppWidget extends StatefulWidget {
 
 class _AppWidgetState extends State<AppWidget> {
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
+  }
+
+  /// Did Change Dependencies
+  @override
+  void didChangeDependencies() {
     precacheImage(AssetImage(AppImages.avatar1), context);
     precacheImage(AssetImage(AppImages.avatar2), context);
     precacheImage(AssetImage(AppImages.avatar3), context);
     precacheImage(AssetImage(AppImages.avatar4), context);
     precacheImage(AssetImage(AppImages.avatar5), context);
     precacheImage(AssetImage(AppImages.avatar6), context);
-    precacheImage(AssetImage(AppImages.bgRepeat), context);
+    super.didChangeDependencies();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       systemNavigationBarColor: Colors.black, // navigation bar color

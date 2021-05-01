@@ -1,4 +1,5 @@
 import 'package:dixit_go/pages/game/join/join_page.dart';
+import 'package:dixit_go/pages/game/pregame/pre_game_page.dart';
 import 'package:dixit_go/pages/home/home_page.dart';
 import 'package:dixit_go/pages/splash/splash_page.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,12 @@ class AppRouter {
       // var args = settings.arguments;
       return AppTransactionFade(
         page: JoinPage(),
+      );
+    }
+      if (settings.name == '/game/pre') {
+      // var args = settings.arguments;
+      return AppTransactionFade(
+        page: PreGamePage(),
       );
     }
     assert(false, 'Need to implement ${settings.name}');

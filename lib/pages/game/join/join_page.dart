@@ -131,14 +131,14 @@ class _JoinPageState extends State<JoinPage> {
       _loading = true;
       rect = RectGetter.getRectFromKey(globalKey)!;
     });
-    await Future.delayed(new Duration(milliseconds: 2800));
+    await Future.delayed(new Duration(milliseconds: 800));
     WidgetsBinding.instance!.addPostFrameCallback((_) {
       setState(() =>
           rect = rect.inflate(1.3 * MediaQuery.of(context).size.longestSide));
       Future.delayed(
-        animationDurationPage + Duration(milliseconds: 300),
+        animationDurationPage + Duration(milliseconds: 100),
         () {
-          Navigator.of(context).pop();
+          Navigator.pushNamed(context, '/game/pre');
         },
       );
     });

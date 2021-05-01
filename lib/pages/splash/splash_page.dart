@@ -16,13 +16,14 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   load() async {
-    await Future.delayed(new Duration(seconds: 4));
-    Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => true);
+    await Future.delayed(new Duration(seconds: 2));
+    precacheImage(AssetImage(AppImages.bgHome), context).then((value) {
+      Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => true);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    precacheImage(AssetImage(AppImages.bgHome), context);
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: new Stack(
@@ -42,7 +43,10 @@ class _SplashPageState extends State<SplashPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                child: LogoComponent(height: 100, top: 30,),
+                child: LogoComponent(
+                  height: 100,
+                  top: 30,
+                ),
               ),
             ],
           ),

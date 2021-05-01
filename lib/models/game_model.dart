@@ -33,9 +33,11 @@ class GameModel {
 
 class PlayerModel extends UserModel {
   late int sorted;
+  String? colorCard;
 
   PlayerModel({
     required this.sorted,
+    this.colorCard = "",
   }) : super(
           name: '',
           username: '',
@@ -49,6 +51,7 @@ class PlayerModel extends UserModel {
           email: json['email'],
         ) {
     sorted = json['sorted'];
+    colorCard = json['colorCard'];
   }
 }
 

@@ -35,7 +35,7 @@ class FooterWidget extends StatelessWidget {
             children: [
               !loading
                   ? Text(
-                      "Continuar",
+                      "Iniciar partida",
                       style: TextStyle(fontSize: 18),
                     )
                   : Container(

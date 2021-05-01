@@ -4,9 +4,13 @@ import 'package:flutter/material.dart';
 class LogoComponent extends StatelessWidget {
   final double height;
   final double top;
+  final bool isHero;
+  final bool transitionOnUserGestures;
   LogoComponent({
     this.height = 50,
     this.top = 0,
+    this.isHero = true,
+    this.transitionOnUserGestures = true,
   });
 
   @override
@@ -14,14 +18,19 @@ class LogoComponent extends StatelessWidget {
     ImageProvider logo = AssetImage(AppImages.logo);
     return Container(
       padding: EdgeInsets.only(top: top),
-      child: Hero(
-        tag: "logo",
-        transitionOnUserGestures: true,
-        child: Image(
-          image: logo,
-          height: height,
-        ),
-      ),
+      child: isHero
+          ? Hero(
+              tag: "logo",
+              transitionOnUserGestures: transitionOnUserGestures,
+              child: Image(
+                image: logo,
+                height: height,
+              ),
+            )
+          : Image(
+              image: logo,
+              height: height,
+            ),
     );
   }
 }
