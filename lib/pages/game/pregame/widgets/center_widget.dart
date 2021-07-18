@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:dixit_go/core/app_router.dart';
 import 'package:dixit_go/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -48,7 +49,7 @@ class _CenterWidgetState extends State<CenterWidget> {
                     repeatForever: false,
                     animatedTexts: [
                       FadeAnimatedText(
-                        'Vamos começar',
+                        'Já vamos começar',
                         textStyle: AppTextStyles.titleBanner,
                       ),
                       FadeAnimatedText(
@@ -79,7 +80,13 @@ class _CenterWidgetState extends State<CenterWidget> {
                       ),
                     ],
                     onFinished: () {
-                      Navigator.pushNamed(context, '/home');
+                      Navigator.pushNamed(
+                        context,
+                        '/home',
+                        arguments: DefaultArguments(
+                          origem: OrigemEnum.game,
+                        ),
+                      );
                     },
                   )
                 : Container(),

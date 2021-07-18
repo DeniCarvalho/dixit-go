@@ -1,12 +1,15 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:dixit_go/core/app_router.dart';
 import 'package:dixit_go/core/core.dart';
 import 'package:dixit_go/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 class CenterWidget extends StatefulWidget {
+  final OrigemEnum origem;
   final bool visible;
   CenterWidget({
     required this.visible,
+    this.origem = OrigemEnum.home,
   });
   @override
   _CenterWidgetState createState() => _CenterWidgetState();
@@ -43,42 +46,60 @@ class _CenterWidgetState extends State<CenterWidget> {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           color: Colors.transparent,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              startFirst
-                  ? AnimatedTextKit(
-                      isRepeatingAnimation: false,
-                      repeatForever: false,
-                      animatedTexts: [
-                        TyperAnimatedText(
-                          'olá ${userModel.firstName()},',
-                          textStyle: AppTextStyles.titleBanner,
-                          speed: const Duration(milliseconds: 50),
-                        ),
-                      ],
-                      onFinished: () {
-                        setState(() {
-                          this.startSecond = true;
-                        });
-                      },
-                    )
-                  : Container(),
-              startSecond
-                  ? AnimatedTextKit(
-                      isRepeatingAnimation: false,
-                      repeatForever: false,
-                      animatedTexts: [
-                        TyperAnimatedText(
-                          'pronto para usar a imaginação?',
-                          textStyle: AppTextStyles.subtitleBanner,
-                          speed: const Duration(milliseconds: 50),
-                        ),
-                      ],
-                    )
-                  : Container(),
-            ],
-          ),
+          child: widget.origem == OrigemEnum.splash
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    startFirst
+                        ? AnimatedTextKit(
+                            isRepeatingAnimation: false,
+                            repeatForever: false,
+                            animatedTexts: [
+                              TyperAnimatedText(
+                                'olá ${userModel.firstName()},',
+                                textStyle: AppTextStyles.titleBanner,
+                                speed: const Duration(milliseconds: 50),
+                              ),
+                            ],
+                            onFinished: () {
+                              setState(() {
+                                this.startSecond = true;
+                              });
+                            },
+                          )
+                        : Container(),
+                    startSecond
+                        ? AnimatedTextKit(
+                            isRepeatingAnimation: false,
+                            repeatForever: false,
+                            animatedTexts: [
+                              TyperAnimatedText(
+                                'pronto para usar a imaginação?',
+                                textStyle: AppTextStyles.subtitleBanner,
+                                speed: const Duration(milliseconds: 50),
+                              ),
+                            ],
+                          )
+                        : Container(),
+                  ],
+                )
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Container(
+                      child: Text(
+                        'olá ${userModel.firstName()},',
+                        style: AppTextStyles.titleBanner,
+                      ),
+                    ),
+                    Container(
+                         child: Text(
+                        'pronto para usar a imaginação?',
+                        style: AppTextStyles.subtitleBanner,
+                      ),
+                    ),
+                  ],
+                ),
         ),
       ),
     );

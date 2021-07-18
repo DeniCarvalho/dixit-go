@@ -1,5 +1,6 @@
 import 'package:dixit_go/components/background_component.dart';
 import 'package:dixit_go/components/logo_component.dart';
+import 'package:dixit_go/core/app_router.dart';
 import 'package:dixit_go/core/core.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,8 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  late BuildContext _context;
+
   @override
   void initState() {
     super.initState();
@@ -17,13 +20,20 @@ class _SplashPageState extends State<SplashPage> {
 
   load() async {
     await Future.delayed(new Duration(seconds: 2));
-    precacheImage(AssetImage(AppImages.bgHome), context).then((value) {
-      Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => true);
+    precacheImage(AssetImage(AppImages.bgHome), _context).then((value) {
+      Navigator.of(_context).pushNamedAndRemoveUntil(
+        "/home",
+        (route) => true,
+        arguments: DefaultArguments(
+          origem: OrigemEnum.splash,
+        ),
+      );
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    _context = context;
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: new Stack(

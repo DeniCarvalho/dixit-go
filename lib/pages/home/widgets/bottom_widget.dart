@@ -41,10 +41,10 @@ class BottomWidget extends StatelessWidget {
                     child: InkWell(
                       onTap: () async {
                         // await Future.delayed(new Duration(milliseconds: 100));
-                        precacheImage(AssetImage(AppImages.bgRepeat), context)
-                            .then((value) {
+                        // precacheImage(AssetImage(AppImages.bgRepeat), context)
+                        //     .then((value) {
                           Navigator.pushNamed(context, '/game/join');
-                        });
+                        // });
                       },
                       child: Container(
                         width: 300.0,

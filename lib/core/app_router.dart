@@ -9,6 +9,7 @@ import 'app_widget.dart';
 class AppRouter {
   Route<dynamic>? Function(RouteSettings settings) loadRoutes =
       (RouteSettings settings) {
+    final DefaultArguments? args = settings.arguments as DefaultArguments?;
     if (settings.name == '/splash') {
       // var args = settings.arguments;
       return AppTransactionFade(
@@ -18,7 +19,7 @@ class AppRouter {
     if (settings.name == '/home') {
       // var args = settings.arguments;
       return AppTransactionFade(
-        page: HomePage(),
+        page: HomePage(origem: args?.origem ?? OrigemEnum.home),
       );
     }
     if (settings.name == '/game/join') {
@@ -27,7 +28,7 @@ class AppRouter {
         page: JoinPage(),
       );
     }
-      if (settings.name == '/game/pre') {
+    if (settings.name == '/game/pre') {
       // var args = settings.arguments;
       return AppTransactionFade(
         page: PreGamePage(),
@@ -47,7 +48,7 @@ class AppRouter {
   }
 }
 
-enum OrigemEnum { login, home, cadastro, detalheColeta, listaFilho }
+enum OrigemEnum { login, home, cadastro, splash, game, }
 
 class DefaultArguments {
   final String title;
@@ -56,6 +57,6 @@ class DefaultArguments {
   DefaultArguments({
     this.title = "",
     this.subtitle = "",
-    this.origem = OrigemEnum.login,
+    this.origem = OrigemEnum.splash,
   });
 }

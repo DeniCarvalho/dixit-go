@@ -56,22 +56,12 @@ class _AppWidgetState extends State<AppWidget> {
         title: "Dixit Go!",
         debugShowCheckedModeBanner: false,
         navigatorKey: Get.key,
+        theme: ThemeData(
+          scaffoldBackgroundColor: AppColors.primary,
+        ),
         home: widget.defaultHome,
         onGenerateRoute: widget.routes,
       ),
     );
   }
-}
-
-enum OrigemEnum { login, home }
-
-class DefaultArguments {
-  final String title;
-  final String subtitle;
-  final OrigemEnum origem;
-  DefaultArguments({
-    this.title = "",
-    this.subtitle = "",
-    this.origem = OrigemEnum.login,
-  });
 }

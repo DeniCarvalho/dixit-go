@@ -1,4 +1,5 @@
 import 'package:dixit_go/components/background_component.dart';
+import 'package:dixit_go/core/app_router.dart';
 import 'package:dixit_go/core/core.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,12 @@ import 'widgets/center_widget.dart';
 import 'widgets/top_widget.dart';
 
 class HomePage extends StatefulWidget {
+  final OrigemEnum origem;
+
+  HomePage({
+    required this.origem,
+  });
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -48,6 +55,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               TopWidget(),
               CenterWidget(
+                origem: widget.origem,
                 visible: _visible,
               ),
               BottomWidget(

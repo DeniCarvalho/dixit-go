@@ -88,11 +88,12 @@ class _JoinPageState extends State<JoinPage> {
             fit: StackFit.expand,
             children: <Widget>[
               Container(
+                color: AppColors.primary,
                 child: BackgroundComponent(
+                  isFilter: true,
                   image: Image.asset(
-                    AppImages.bgRepeat,
+                    AppImages.bgHomeBlur,
                     gaplessPlayback: true,
-                    filterQuality: FilterQuality.high,
                   ).image,
                 ),
               ),
