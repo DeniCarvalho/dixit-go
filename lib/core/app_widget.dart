@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import '../internationalization/appLocalizations.dart';
 import './core.dart';
 
 class AppWidget extends StatefulWidget {
@@ -59,6 +61,16 @@ class _AppWidgetState extends State<AppWidget> {
         theme: ThemeData(
           scaffoldBackgroundColor: AppColors.primary,
         ),
+        supportedLocales: [
+          Locale('en', 'US'),
+          Locale('pt', 'BR'),
+        ],
+        localizationsDelegates: [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
         home: widget.defaultHome,
         onGenerateRoute: widget.routes,
       ),

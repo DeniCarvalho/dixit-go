@@ -1,8 +1,10 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:dixit_go/core/app_router.dart';
-import 'package:dixit_go/core/core.dart';
-import 'package:dixit_go/models/user_model.dart';
 import 'package:flutter/material.dart';
+
+import '../../../core/app_router.dart';
+import '../../../core/core.dart';
+import '../../../internationalization/internationalization.dart';
+import '../../../models/user_model.dart';
 
 class CenterWidget extends StatefulWidget {
   final OrigemEnum origem;
@@ -58,7 +60,7 @@ class _CenterWidgetState extends State<CenterWidget> {
                             repeatForever: false,
                             animatedTexts: [
                               TyperAnimatedText(
-                                'olá ${userModel.firstName()},',
+                                '${'hello'.i18n(context).toLowerCase()} ${userModel.firstName()},',
                                 textStyle: AppTextStyles.titleBanner,
                                 speed: const Duration(milliseconds: 100),
                               ),
@@ -76,7 +78,7 @@ class _CenterWidgetState extends State<CenterWidget> {
                             repeatForever: false,
                             animatedTexts: [
                               TyperAnimatedText(
-                                'pronto para usar a imaginação?',
+                                'readyImagination'.i18n(context).toLowerCase(),
                                 textStyle: AppTextStyles.subtitleBanner,
                                 speed: const Duration(milliseconds: 40),
                               ),
@@ -93,13 +95,13 @@ class _CenterWidgetState extends State<CenterWidget> {
                   children: [
                     Container(
                       child: Text(
-                        'olá ${userModel.firstName()},',
+                        '${'hello'.i18n(context).toLowerCase()} ${userModel.firstName()},',
                         style: AppTextStyles.titleBanner,
                       ),
                     ),
                     Container(
                       child: Text(
-                        'pronto para usar a imaginação?',
+                        'readyImagination'.i18n(context).toLowerCase(),
                         style: AppTextStyles.subtitleBanner,
                       ),
                     ),

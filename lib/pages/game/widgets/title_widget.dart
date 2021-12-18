@@ -1,7 +1,8 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:dixit_go/components/button_pulse_component.dart';
-import 'package:dixit_go/core/core.dart';
 import 'package:flutter/material.dart';
+
+import '../../../components/button_pulse_component.dart';
+import '../../../core/core.dart';
 
 class TitleWidget extends StatelessWidget {
   @override

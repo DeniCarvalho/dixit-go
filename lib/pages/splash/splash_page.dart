@@ -1,8 +1,9 @@
-import 'package:dixit_go/components/background_component.dart';
-import 'package:dixit_go/components/logo_component.dart';
-import 'package:dixit_go/core/app_router.dart';
-import 'package:dixit_go/core/core.dart';
 import 'package:flutter/material.dart';
+
+import '../../components/background_component.dart';
+import '../../components/logo_component.dart';
+import '../../core/app_router.dart';
+import '../../core/core.dart';
 
 class SplashPage extends StatefulWidget {
   @override

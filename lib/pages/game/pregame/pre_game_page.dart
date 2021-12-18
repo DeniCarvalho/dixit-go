@@ -1,7 +1,9 @@
 import 'dart:math';
-import 'package:dixit_go/core/core.dart';
-import 'package:dixit_go/pages/game/pregame/widgets/center_widget.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../../core/core.dart';
+import 'widgets/center_widget.dart';
 
 class PreGamePage extends StatefulWidget {
   @override

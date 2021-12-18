@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:dixit_go/core/core.dart';
+import 'package:dixit_go/internationalization/i18n_extension.dart';
 import 'package:flutter/material.dart';
+
+import '../../../core/core.dart';
 
 class BottomWidget extends StatelessWidget {
   final bool visible;
@@ -24,7 +26,7 @@ class BottomWidget extends StatelessWidget {
             Container(
               padding: const EdgeInsets.only(bottom: 10, left: 12),
               child: Text(
-                'O que deseja fazer?',
+                'wantDo'.i18n(context),
                 style: AppTextStyles.titleBold,
               ),
             ),
@@ -36,8 +38,8 @@ class BottomWidget extends StatelessWidget {
                 physics: BouncingScrollPhysics(),
                 children: <Widget>[
                   _cardOption(
-                    title: "Nova partida",
-                    description: "Inicie uma partida do zero",
+                    title: 'newGame'.i18n(context),
+                    description: 'newGameDescription'.i18n(context),
                     leading: Icons.golf_course,
                     action: () {
                       // await Future.delayed(new Duration(milliseconds: 100));
@@ -48,14 +50,14 @@ class BottomWidget extends StatelessWidget {
                     },
                   ),
                   _cardOption(
-                    title: "Entrar na partida",
-                    description: "Use o código para entra",
+                    title: 'joinGame'.i18n(context),
+                    description: 'joinGameDescription'.i18n(context),
                     leading: Icons.open_in_browser,
                     action: () {},
                   ),
                   _cardOption(
-                    title: "Como jogar",
-                    description: "Conheça as regras do jogo",
+                    title: 'helpPlayer'.i18n(context),
+                    description: 'helpPlayerDescription'.i18n(context),
                     leading: Icons.open_in_browser,
                     action: () {},
                   ),

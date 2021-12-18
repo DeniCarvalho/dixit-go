@@ -1,8 +1,8 @@
-import 'package:dixit_go/components/background_component.dart';
-import 'package:dixit_go/core/app_router.dart';
-import 'package:dixit_go/core/core.dart';
 import 'package:flutter/material.dart';
 
+import '../../components/background_component.dart';
+import '../../core/app_router.dart';
+import '../../core/core.dart';
 import 'widgets/bottom_widget.dart';
 import 'widgets/center_widget.dart';
 import 'widgets/top_widget.dart';

@@ -1,6 +1,7 @@
-import 'package:dixit_go/models/game_model.dart';
-import 'package:dixit_go/pages/game/widgets/player_empty_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../../../models/game_model.dart';
+import 'player_empty_widget.dart';
 
 class PlayerList extends StatefulWidget {
   final List<PlayerModel> players;

@@ -1,7 +1,8 @@
-import 'package:dixit_go/components/dialog_player_component.dart';
-import 'package:dixit_go/core/core.dart';
-import 'package:dixit_go/models/game_model.dart';
 import 'package:flutter/material.dart';
+
+import '../../../components/dialog_player_component.dart';
+import '../../../core/core.dart';
+import '../../../models/game_model.dart';
 
 class PlayerEmptyWidget extends StatefulWidget {
   final int index;

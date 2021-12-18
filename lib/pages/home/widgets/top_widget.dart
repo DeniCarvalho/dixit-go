@@ -1,6 +1,7 @@
-import 'package:dixit_go/components/avatar_component.dart';
-import 'package:dixit_go/components/logo_component.dart';
 import 'package:flutter/material.dart';
+
+import '../../../components/avatar_component.dart';
+import '../../../components/logo_component.dart';
 
 class TopWidget extends StatelessWidget {
   final bool visible;

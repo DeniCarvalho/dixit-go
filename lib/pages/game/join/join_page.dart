@@ -1,12 +1,13 @@
-import 'package:dixit_go/components/background_component.dart';
-import 'package:dixit_go/components/ripple_component.dart';
-import 'package:dixit_go/core/core.dart';
-import 'package:dixit_go/models/game_model.dart';
-import 'package:dixit_go/pages/game/widgets/footer_widget.dart';
-import 'package:dixit_go/pages/game/widgets/player_list.dart';
-import 'package:dixit_go/pages/game/widgets/title_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:rect_getter/rect_getter.dart';
+
+import '../../../components/background_component.dart';
+import '../../../components/ripple_component.dart';
+import '../../../core/core.dart';
+import '../../../models/game_model.dart';
+import '../widgets/footer_widget.dart';
+import '../widgets/player_list.dart';
+import '../widgets/title_widget.dart';
 
 class JoinPage extends StatefulWidget {
   @override
