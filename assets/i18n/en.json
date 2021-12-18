@@ -7,5 +7,7 @@
     "joinGame": "Join in game",
     "joinGameDescription": "Game in progress",
     "helpPlayer": "How to play",
-    "helpPlayerDescription": "Know the game rules"
+    "helpPlayerDescription": "Know the game rules",
+    "awaiting": "Awaiting",
+    "startGame": "Start game"
 }

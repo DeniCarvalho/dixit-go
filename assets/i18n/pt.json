@@ -7,5 +7,7 @@
     "joinGame": "Entrar na partida",
     "joinGameDescription": "Partida em andamento",
     "helpPlayer": "Como jogar",
-    "helpPlayerDescription": "Conheça as regras do jogo"
+    "helpPlayerDescription": "Conheça as regras do jogo",
+    "awaiting": "Aguadando",
+    "startGame": "Iniciar partida"
 }

@@ -1,4 +1,5 @@
 import 'package:dixit_go/core/core.dart';
+import 'package:dixit_go/internationalization/i18n_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:rect_getter/rect_getter.dart';
 
@@ -15,7 +16,7 @@ class FooterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
       child: SizedBox(
         width: double.infinity,
         child: ElevatedButton(
@@ -27,7 +28,7 @@ class FooterWidget extends StatelessWidget {
               ),
             ),
             backgroundColor: MaterialStateProperty.all(
-              AppColors.contrastPrimary,
+              Colors.white,
             ),
           ),
           child: Row(
@@ -35,17 +36,21 @@ class FooterWidget extends StatelessWidget {
             children: [
               !loading
                   ? Text(
-                      "Iniciar partida",
-                      style: TextStyle(fontSize: 18),
+                      'startGame'.i18n(context),
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: AppColors.contrastPrimary,
+                        fontWeight: FontWeight.w600,
+                      ),
                     )
                   : Container(
                       height: 20.0,
                       width: 20.0,
                       child: CircularProgressIndicator(
-                        backgroundColor: Colors.white,
+                        backgroundColor: AppColors.contrastPrimary,
                         strokeWidth: 1.5,
                         valueColor: new AlwaysStoppedAnimation<Color>(
-                          AppColors.contrastPrimary,
+                          Colors.white,
                         ),
                       ),
                     ),

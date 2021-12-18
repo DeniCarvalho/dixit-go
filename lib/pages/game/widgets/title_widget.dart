@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:dixit_go/internationalization/i18n_extension.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/button_pulse_component.dart';
@@ -44,7 +45,7 @@ class TitleWidget extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  "aguardando",
+                  'awaiting'.i18n(context).toLowerCase(),
                   style: AppTextStyles.headingGame,
                 ),
                 SizedBox(

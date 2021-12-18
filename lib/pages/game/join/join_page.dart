@@ -122,8 +122,7 @@ class _JoinPageState extends State<JoinPage> {
             ],
           ),
         ),
-        rippleComponent(
-            rect, animationDurationPage, context, AppColors.contrastPrimary),
+        rippleComponent(rect, animationDurationPage, context, Colors.white),
       ],
     );
   }

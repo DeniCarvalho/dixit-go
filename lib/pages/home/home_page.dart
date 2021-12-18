@@ -24,15 +24,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    // load();
   }
 
-  load() async {
-    // await Future.delayed(new Duration(seconds: 2));
-    setState(() {
-      _visible = true;
-    });
-  }
+  bool get showWidgets => widget.origem != OrigemEnum.splash ? true : _visible;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +48,7 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               TopWidget(
-                visible: _visible,
+                visible: showWidgets,
               ),
               CenterWidget(
                 origem: widget.origem,
@@ -65,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               BottomWidget(
-                visible: _visible,
+                visible: showWidgets,
               ),
             ],
           ),
