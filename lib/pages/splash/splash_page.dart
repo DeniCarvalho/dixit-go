@@ -56,6 +56,7 @@ class _SplashPageState extends State<SplashPage> {
                 child: LogoComponent(
                   height: 100,
                   top: 30,
+                  isHero: false,
                 ),
               ),
             ],

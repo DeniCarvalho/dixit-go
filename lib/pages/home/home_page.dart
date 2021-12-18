@@ -24,11 +24,11 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    load();
+    // load();
   }
 
   load() async {
-    await Future.delayed(new Duration(milliseconds: 800));
+    // await Future.delayed(new Duration(seconds: 2));
     setState(() {
       _visible = true;
     });
@@ -53,10 +53,16 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              TopWidget(),
+              TopWidget(
+                visible: _visible,
+              ),
               CenterWidget(
                 origem: widget.origem,
-                visible: _visible,
+                finishAnimation: () {
+                  setState(() {
+                    _visible = true;
+                  });
+                },
               ),
               BottomWidget(
                 visible: _visible,

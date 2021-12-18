@@ -7,9 +7,11 @@ import 'package:flutter/material.dart';
 class CenterWidget extends StatefulWidget {
   final OrigemEnum origem;
   final bool visible;
+  final Function() finishAnimation;
   CenterWidget({
-    required this.visible,
+    this.visible = true,
     this.origem = OrigemEnum.home,
+    required this.finishAnimation,
   });
   @override
   _CenterWidgetState createState() => _CenterWidgetState();
@@ -58,7 +60,7 @@ class _CenterWidgetState extends State<CenterWidget> {
                               TyperAnimatedText(
                                 'olá ${userModel.firstName()},',
                                 textStyle: AppTextStyles.titleBanner,
-                                speed: const Duration(milliseconds: 50),
+                                speed: const Duration(milliseconds: 100),
                               ),
                             ],
                             onFinished: () {
@@ -76,9 +78,12 @@ class _CenterWidgetState extends State<CenterWidget> {
                               TyperAnimatedText(
                                 'pronto para usar a imaginação?',
                                 textStyle: AppTextStyles.subtitleBanner,
-                                speed: const Duration(milliseconds: 50),
+                                speed: const Duration(milliseconds: 40),
                               ),
                             ],
+                            onFinished: () {
+                              widget.finishAnimation();
+                            },
                           )
                         : Container(),
                   ],
@@ -93,7 +98,7 @@ class _CenterWidgetState extends State<CenterWidget> {
                       ),
                     ),
                     Container(
-                         child: Text(
+                      child: Text(
                         'pronto para usar a imaginação?',
                         style: AppTextStyles.subtitleBanner,
                       ),

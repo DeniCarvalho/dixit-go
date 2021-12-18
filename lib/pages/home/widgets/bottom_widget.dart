@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dixit_go/core/core.dart';
 import 'package:flutter/material.dart';
 
@@ -34,97 +35,74 @@ class BottomWidget extends StatelessWidget {
                 shrinkWrap: true,
                 physics: BouncingScrollPhysics(),
                 children: <Widget>[
-                  Card(
-                    elevation: 5,
-                    color: Colors.white,
-                    margin: EdgeInsets.all(10),
-                    child: InkWell(
-                      onTap: () async {
-                        // await Future.delayed(new Duration(milliseconds: 100));
-                        // precacheImage(AssetImage(AppImages.bgRepeat), context)
-                        //     .then((value) {
-                          Navigator.pushNamed(context, '/game/join');
-                        // });
-                      },
-                      child: Container(
-                        width: 300.0,
-                        child: ListTile(
-                          leading: Container(
-                            child: new Icon(
-                              Icons.golf_course,
-                              size: 35,
-                            ),
-                          ),
-                          title: Text(
-                            "Nova partida",
-                            style: AppTextStyles.heading,
-                            maxLines: 1,
-                          ),
-                          subtitle: Text(
-                            "Junte os amigos e comece a diversão",
-                            maxLines: 2,
-                          ),
-                          trailing: null,
-                        ),
-                      ),
-                    ),
+                  _cardOption(
+                    title: "Nova partida",
+                    description: "Inicie uma partida do zero",
+                    leading: Icons.golf_course,
+                    action: () {
+                      // await Future.delayed(new Duration(milliseconds: 100));
+                      // precacheImage(AssetImage(AppImages.bgRepeat), context)
+                      //     .then((value) {
+                      Navigator.pushNamed(context, '/game/join');
+                      // });
+                    },
                   ),
-                  Card(
-                    elevation: 5,
-                    color: Colors.white,
-                    margin: EdgeInsets.all(10),
-                    child: Container(
-                      width: 300.0,
-                      child: ListTile(
-                        leading: Container(
-                          child: new Icon(
-                            Icons.open_in_browser,
-                            size: 35,
-                          ),
-                        ),
-                        title: Text(
-                          "Entrar na partida",
-                          style: AppTextStyles.heading,
-                          maxLines: 1,
-                        ),
-                        subtitle: Text(
-                          "Use o código para entrar",
-                          maxLines: 2,
-                        ),
-                        trailing: null,
-                      ),
-                    ),
+                  _cardOption(
+                    title: "Entrar na partida",
+                    description: "Use o código para entra",
+                    leading: Icons.open_in_browser,
+                    action: () {},
                   ),
-                  Card(
-                    elevation: 5,
-                    color: Colors.white,
-                    margin: EdgeInsets.all(10),
-                    child: Container(
-                      width: 300.0,
-                      child: ListTile(
-                        leading: Container(
-                          child: new Icon(
-                            Icons.help,
-                            size: 35,
-                          ),
-                        ),
-                        title: Text(
-                          "Como jogar",
-                          style: AppTextStyles.heading,
-                          maxLines: 1,
-                        ),
-                        subtitle: Text(
-                          "Veja as regras e saiba como jogar ",
-                          maxLines: 2,
-                        ),
-                        trailing: null,
-                      ),
-                    ),
+                  _cardOption(
+                    title: "Como jogar",
+                    description: "Conheça as regras do jogo",
+                    leading: Icons.open_in_browser,
+                    action: () {},
                   ),
                 ],
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _cardOption(
+      {Color color = Colors.white,
+      required Function() action,
+      IconData? leading,
+      required String title,
+      String? description}) {
+    return Card(
+      elevation: 5,
+      color: color,
+      margin: EdgeInsets.all(10),
+      child: InkWell(
+        onTap: action,
+        child: Container(
+          width: 300.0,
+          child: ListTile(
+            leading: leading != null
+                ? Container(
+                    child: new Icon(
+                      leading,
+                      size: 35,
+                    ),
+                  )
+                : null,
+            title: Text(
+              title,
+              style: AppTextStyles.heading,
+              maxLines: 1,
+            ),
+            subtitle: AutoSizeText(
+              description ?? '',
+              presetFontSizes: [14],
+              maxLines: 1,
+            ),
+            trailing: null,
+          ),
         ),
       ),
     );
