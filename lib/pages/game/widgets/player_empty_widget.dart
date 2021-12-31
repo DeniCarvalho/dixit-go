@@ -53,14 +53,14 @@ class _PlayerEmptyWidgetState extends State<PlayerEmptyWidget>
   Widget build(BuildContext context) {
     _scale = 1 - _controller.value;
     return Padding(
-      padding: const EdgeInsets.only(top: 20.0),
+      padding: EdgeInsets.only(top: 20.0.responsiveHeight),
       child: Column(
         children: [
           CustomPaint(
             painter: painter,
             child: Container(
-              height: 65,
-              width: 65,
+              height: 65.responsiveHeight,
+              width: 65.responsiveWidth,
               color: Colors.transparent,
               child: Center(
                 child: widget.user != null
@@ -98,8 +98,8 @@ class _PlayerEmptyWidgetState extends State<PlayerEmptyWidget>
                                         widget.user?.pathAvatar ?? '',
                                       ),
                                     ),
-                                height: 60,
-                                width: 60,
+                                height: 60.responsiveHeight,
+                                width: 60.responsiveWidth,
                               ),
                             ),
                           ),
@@ -117,7 +117,7 @@ class _PlayerEmptyWidgetState extends State<PlayerEmptyWidget>
               _tap();
             },
             child: Container(
-              padding: EdgeInsets.only(top: 8),
+              padding: EdgeInsets.only(top: 8.responsiveHeight),
               child: Text(
                 widget.user?.username ?? '--',
                 style: AppTextStyles.bodyWhite15,
@@ -172,7 +172,7 @@ class _PlayerEmptyWidgetState extends State<PlayerEmptyWidget>
                       overflow: TextOverflow.ellipsis,
                     ),
                     SizedBox(
-                      height: 12,
+                      height: 12.responsiveHeight,
                     ),
                   ],
                 ),
@@ -190,7 +190,7 @@ class _PlayerEmptyWidgetState extends State<PlayerEmptyWidget>
                       overflow: TextOverflow.ellipsis,
                     ),
                     SizedBox(
-                      height: 12,
+                      height: 12.responsiveHeight,
                     ),
                   ],
                 ),

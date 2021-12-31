@@ -17,37 +17,44 @@ class BottomWidget extends StatelessWidget {
       duration: Duration(milliseconds: 400),
       child: Container(
         width: double.infinity,
-        height: 200,
+        height: 200.responsiveHeight,
         color: Colors.transparent,
+        padding: EdgeInsets.only(bottom: 20.responsiveHeight),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: const EdgeInsets.only(bottom: 10, left: 12),
+              padding: EdgeInsets.only(
+                bottom: 10.responsiveHeight,
+                left: 25.responsiveWidth,
+              ),
               child: Text(
                 'wantDo'.i18n(context),
                 style: AppTextStyles.titleBold,
               ),
             ),
             Container(
-              height: 95,
+              height: 95.responsiveHeight,
               child: new ListView(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 physics: BouncingScrollPhysics(),
                 children: <Widget>[
-                  _cardOption(
-                    title: 'newGame'.i18n(context),
-                    description: 'newGameDescription'.i18n(context),
-                    leading: Icons.golf_course,
-                    action: () {
-                      // await Future.delayed(new Duration(milliseconds: 100));
-                      // precacheImage(AssetImage(AppImages.bgRepeat), context)
-                      //     .then((value) {
-                      Navigator.pushNamed(context, '/game/join');
-                      // });
-                    },
+                  Padding(
+                    padding: EdgeInsets.only(left: 15.responsiveWidth),
+                    child: _cardOption(
+                      title: 'newGame'.i18n(context),
+                      description: 'newGameDescription'.i18n(context),
+                      leading: Icons.golf_course,
+                      action: () {
+                        // await Future.delayed(new Duration(milliseconds: 100));
+                        // precacheImage(AssetImage(AppImages.bgRepeat), context)
+                        //     .then((value) {
+                        Navigator.pushNamed(context, '/game/join');
+                        // });
+                      },
+                    ),
                   ),
                   _cardOption(
                     title: 'joinGame'.i18n(context),
@@ -83,13 +90,13 @@ class BottomWidget extends StatelessWidget {
       child: InkWell(
         onTap: action,
         child: Container(
-          width: 300.0,
+          width: 300.0.responsiveWidth,
           child: ListTile(
             leading: leading != null
                 ? Container(
                     child: new Icon(
                       leading,
-                      size: 35,
+                      size: 35.fontSize,
                     ),
                   )
                 : null,
@@ -100,7 +107,7 @@ class BottomWidget extends StatelessWidget {
             ),
             subtitle: AutoSizeText(
               description ?? '',
-              presetFontSizes: [14],
+              presetFontSizes: [14.fontSize],
               maxLines: 1,
             ),
             trailing: null,

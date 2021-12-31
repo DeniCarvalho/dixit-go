@@ -16,7 +16,10 @@ class FooterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
+      padding: EdgeInsets.symmetric(
+        horizontal: 30.responsiveWidth,
+        vertical: 25.responsiveHeight,
+      ),
       child: SizedBox(
         width: double.infinity,
         child: ElevatedButton(
@@ -24,7 +27,7 @@ class FooterWidget extends StatelessWidget {
           style: ButtonStyle(
             padding: MaterialStateProperty.all(
               EdgeInsets.symmetric(
-                vertical: 12,
+                vertical: 12.responsiveHeight,
               ),
             ),
             backgroundColor: MaterialStateProperty.all(
@@ -38,14 +41,14 @@ class FooterWidget extends StatelessWidget {
                   ? Text(
                       'startGame'.i18n(context),
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 18.fontSize,
                         color: AppColors.contrastPrimary,
                         fontWeight: FontWeight.w600,
                       ),
                     )
                   : Container(
-                      height: 20.0,
-                      width: 20.0,
+                      height: 20.0.responsiveHeight,
+                      width: 20.0.responsiveWidth,
                       child: CircularProgressIndicator(
                         backgroundColor: AppColors.contrastPrimary,
                         strokeWidth: 1.5,

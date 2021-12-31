@@ -1,7 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/app_router.dart';
 import '../../../core/core.dart';
 import '../../../internationalization/internationalization.dart';
 import '../../../models/user_model.dart';
@@ -48,46 +47,44 @@ class _CenterWidgetState extends State<CenterWidget> {
         opacity: widget.visible ? 1.0 : 0.0,
         duration: Duration(milliseconds: 400),
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: 20.responsiveWidth),
           color: Colors.transparent,
           child: widget.origem == OrigemEnum.splash
               ? Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    startFirst
-                        ? AnimatedTextKit(
-                            isRepeatingAnimation: false,
-                            repeatForever: false,
-                            animatedTexts: [
-                              TyperAnimatedText(
-                                '${'hello'.i18n(context).toLowerCase()} ${userModel.firstName()},',
-                                textStyle: AppTextStyles.titleBanner,
-                                speed: const Duration(milliseconds: 100),
-                              ),
-                            ],
-                            onFinished: () {
-                              setState(() {
-                                this.startSecond = true;
-                              });
-                            },
-                          )
-                        : Container(),
-                    startSecond
-                        ? AnimatedTextKit(
-                            isRepeatingAnimation: false,
-                            repeatForever: false,
-                            animatedTexts: [
-                              TyperAnimatedText(
-                                'readyImagination'.i18n(context).toLowerCase(),
-                                textStyle: AppTextStyles.subtitleBanner,
-                                speed: const Duration(milliseconds: 40),
-                              ),
-                            ],
-                            onFinished: () {
-                              widget.finishAnimation();
-                            },
-                          )
-                        : Container(),
+                    if (startFirst)
+                      AnimatedTextKit(
+                        isRepeatingAnimation: false,
+                        repeatForever: false,
+                        animatedTexts: [
+                          TyperAnimatedText(
+                            '${'hello'.i18n(context).toLowerCase()} ${userModel.firstName()},',
+                            textStyle: AppTextStyles.titleBanner,
+                            speed: const Duration(milliseconds: 100),
+                          ),
+                        ],
+                        onFinished: () {
+                          setState(() {
+                            this.startSecond = true;
+                          });
+                        },
+                      ),
+                    if (startSecond)
+                      AnimatedTextKit(
+                        isRepeatingAnimation: false,
+                        repeatForever: false,
+                        animatedTexts: [
+                          TyperAnimatedText(
+                            'readyImagination'.i18n(context).toLowerCase(),
+                            textStyle: AppTextStyles.subtitleBanner,
+                            speed: const Duration(milliseconds: 40),
+                          ),
+                        ],
+                        onFinished: () {
+                          widget.finishAnimation();
+                        },
+                      ),
                   ],
                 )
               : Column(

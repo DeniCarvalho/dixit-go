@@ -39,58 +39,56 @@ class _CenterWidgetState extends State<CenterWidget> {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: 20.responsiveWidth),
         color: Colors.transparent,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            startFirst
-                ? AnimatedTextKit(
-                    isRepeatingAnimation: false,
-                    repeatForever: false,
-                    animatedTexts: [
-                      FadeAnimatedText(
-                        'Já vamos começar',
-                        textStyle: AppTextStyles.titleBanner,
-                      ),
-                      FadeAnimatedText(
-                        'sua cor será:',
-                        textStyle: AppTextStyles.titleBanner,
-                      ),
-                    ],
-                    onFinished: () {
-                      widget.showColor();
-                      setState(() {
-                        startFirst = false;
-                        startSecond = true;
-                      });
-                    },
-                  )
-                : Container(),
-            startSecond
-                ? AnimatedTextKit(
-                    repeatForever: false,
-                    animatedTexts: [
-                      FadeAnimatedText(
-                        '${widget.colorName}',
-                        textStyle: GoogleFonts.notoSans(
-                          color: widget.colorText,
-                          fontSize: 40,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                    onFinished: () {
-                      Navigator.pushNamed(
-                        context,
-                        '/home',
-                        arguments: DefaultArguments(
-                          origem: OrigemEnum.game,
-                        ),
-                      );
-                    },
-                  )
-                : Container(),
+            if (startFirst)
+              AnimatedTextKit(
+                isRepeatingAnimation: false,
+                repeatForever: false,
+                animatedTexts: [
+                  FadeAnimatedText(
+                    'Já vamos começar',
+                    textStyle: AppTextStyles.titleBanner,
+                  ),
+                  FadeAnimatedText(
+                    'sua cor será:',
+                    textStyle: AppTextStyles.titleBanner,
+                  ),
+                ],
+                onFinished: () {
+                  widget.showColor();
+                  setState(() {
+                    startFirst = false;
+                    startSecond = true;
+                  });
+                },
+              ),
+            if (startSecond)
+              AnimatedTextKit(
+                repeatForever: false,
+                animatedTexts: [
+                  FadeAnimatedText(
+                    '${widget.colorName}',
+                    textStyle: GoogleFonts.notoSans(
+                      color: widget.colorText,
+                      fontSize: 40.fontSize,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+                onFinished: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/home',
+                    arguments: DefaultArguments(
+                      origem: OrigemEnum.game,
+                    ),
+                  );
+                },
+              ),
           ],
         ),
       ),

@@ -1,5 +1,6 @@
-import 'package:dixit_go/core/app_images.dart';
 import 'package:flutter/material.dart';
+
+import '../core/core.dart';
 
 class LogoComponent extends StatelessWidget {
   final double height;
@@ -17,19 +18,19 @@ class LogoComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     ImageProvider logo = AssetImage(AppImages.logo);
     return Container(
-      padding: EdgeInsets.only(top: top),
+      padding: EdgeInsets.only(top: top.responsiveHeight),
       child: isHero
           ? Hero(
               tag: "logo",
               transitionOnUserGestures: transitionOnUserGestures,
               child: Image(
                 image: logo,
-                height: height,
+                height: height.responsiveHeight,
               ),
             )
           : Image(
               image: logo,
-              height: height,
+              height: height.responsiveHeight,
             ),
     );
   }

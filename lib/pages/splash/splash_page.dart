@@ -53,8 +53,8 @@ class _SplashPageState extends State<SplashPage> {
             children: [
               Container(
                 child: LogoComponent(
-                  height: 100,
-                  top: 30,
+                  height: 100.responsiveHeight,
+                  top: 30.responsiveHeight,
                   isHero: false,
                 ),
               ),

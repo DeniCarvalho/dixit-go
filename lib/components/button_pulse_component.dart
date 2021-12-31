@@ -52,7 +52,8 @@ class _ButtonPulseComponentState extends State<ButtonPulseComponent>
                 boxShadow: [
                   for (var i = 0; i < 3; i++)
                     BoxShadow(
-                      color: Colors.white.withOpacity(_animationController.value / 2),
+                      color: Colors.white
+                          .withOpacity(_animationController.value / 2),
                       spreadRadius: _animation.value * i,
                     )
                 ],
@@ -60,7 +61,7 @@ class _ButtonPulseComponentState extends State<ButtonPulseComponent>
               child: Icon(
                 Icons.group_add,
                 color: AppColors.primary,
-                size: 28,
+                size: 28.fontSize,
               ),
             );
           }),

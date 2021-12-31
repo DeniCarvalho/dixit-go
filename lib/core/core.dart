@@ -5,3 +5,4 @@ export './app_text_styles.dart';
 export './app_images.dart';
 export './app_router.dart';
 export './app_transaction_fade.dart';
+export './responsive/responsive.dart';

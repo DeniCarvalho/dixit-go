@@ -40,12 +40,12 @@ class _CustomDialogBoxState extends State<DialogPlayerComponent> {
       children: <Widget>[
         Container(
           padding: EdgeInsets.only(
-            left: 20,
-            top: 45 + 20,
-            right: 20,
-            bottom: 20,
+            left: 20.responsiveWidth,
+            top: 45 + 20.responsiveHeight,
+            right: 20.responsiveWidth,
+            bottom: 20.responsiveHeight,
           ),
-          margin: EdgeInsets.only(top: 45),
+          margin: EdgeInsets.only(top: 45.responsiveHeight),
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
             color: Colors.white,
@@ -64,16 +64,16 @@ class _CustomDialogBoxState extends State<DialogPlayerComponent> {
               Text(
                 widget.title,
                 style: TextStyle(
-                  fontSize: 22,
+                  fontSize: 22.fontSize,
                   fontWeight: FontWeight.w600,
                 ),
               ),
               SizedBox(
-                height: 15,
+                height: 15.responsiveHeight,
               ),
               widget.details,
               SizedBox(
-                height: 22,
+                height: 22.responsiveHeight,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -164,8 +164,8 @@ class _CustomDialogBoxState extends State<DialogPlayerComponent> {
           ),
         ),
         Positioned(
-          left: 20,
-          right: 20,
+          left: 20.responsiveWidth,
+          right: 20.responsiveWidth,
           child: CircleAvatar(
             backgroundColor: Colors.white,
             radius: 45,

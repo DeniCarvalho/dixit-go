@@ -1,19 +1,20 @@
-import 'package:dixit_go/core/core.dart';
 import 'package:flutter/material.dart';
+
+import '../core/core.dart';
 
 class AvatarComponent extends StatelessWidget {
   final double height;
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
   AvatarComponent({
     this.height = 40,
-    this.padding = const EdgeInsets.all(8),
+    this.padding,
   });
 
   @override
   Widget build(BuildContext context) {
     ImageProvider logo = AssetImage(AppImages.avatar6);
     return Container(
-      padding: padding,
+      padding: padding != null ? padding : EdgeInsets.all(8.responsiveHeight),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: new BorderRadius.all(
@@ -35,7 +36,7 @@ class AvatarComponent extends StatelessWidget {
         transitionOnUserGestures: true,
         child: Image(
           image: logo,
-          height: height,
+          height: height.responsiveHeight,
         ),
       ),
     );

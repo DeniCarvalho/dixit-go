@@ -1,26 +1,26 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:dixit_go/internationalization/i18n_extension.dart';
 import 'package:flutter/material.dart';
 
-import '../../../components/button_pulse_component.dart';
+import '../../../components/components.dart';
 import '../../../core/core.dart';
+import '../../../internationalization/i18n_extension.dart';
 
 class TitleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 85,
+      height: 85.responsiveHeight,
       color: Colors.transparent,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+        padding: EdgeInsets.symmetric(horizontal: 15.responsiveWidth),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
-              width: 40,
-              height: 40,
+              width: 40.responsiveWidth,
+              height: 40.responsiveHeight,
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -37,7 +37,7 @@ class TitleWidget extends StatelessWidget {
                   child: Icon(
                     Icons.chevron_left,
                     color: AppColors.primary,
-                    size: 28,
+                    size: 28.fontSize,
                   ),
                 ),
               ),
@@ -49,7 +49,7 @@ class TitleWidget extends StatelessWidget {
                   style: AppTextStyles.headingGame,
                 ),
                 SizedBox(
-                  width: 20,
+                  width: 20.responsiveWidth,
                   child: AnimatedTextKit(
                     isRepeatingAnimation: true,
                     repeatForever: true,
@@ -65,8 +65,8 @@ class TitleWidget extends StatelessWidget {
               ],
             ),
             SizedBox(
-              width: 40,
-              height: 40,
+              width: 40.responsiveWidth,
+              height: 40.responsiveHeight,
               child: ButtonPulseComponent(),
             ),
           ],
