@@ -17,9 +17,8 @@ class BottomWidget extends StatelessWidget {
       duration: Duration(milliseconds: 400),
       child: Container(
         width: double.infinity,
-        height: 200.responsiveHeight,
+        height: MediaQuery.of(context).size.height * 0.24,
         color: Colors.transparent,
-        padding: EdgeInsets.only(bottom: 20.responsiveHeight),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,

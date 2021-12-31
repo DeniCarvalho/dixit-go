@@ -15,9 +15,8 @@ class TopWidget extends StatelessWidget {
       duration: Duration(milliseconds: 400),
       child: Container(
         width: double.infinity,
-        padding: EdgeInsets.only(
-          top: 60.responsiveHeight,
-          bottom: 50.responsiveHeight,
+        padding: EdgeInsets.symmetric(
+          vertical: 50.responsiveHeight,
         ),
         color: Colors.transparent,
         child: Padding(
