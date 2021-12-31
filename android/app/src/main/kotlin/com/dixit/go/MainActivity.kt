@@ -1,4 +1,4 @@
-package com.dixit.go
+package com.jetblaze.dixitgo
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1050623269202",
+    "project_id": "dixitgo",
+    "storage_bucket": "dixitgo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1050623269202:android:44df9412e0ddd4f198c28b",
+        "android_client_info": {
+          "package_name": "com.jetblaze.dixitgo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1050623269202-6cnri41ni56bep92gu8coi1fu1rurkbu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHdsoYrauKo1cviCy3USVxs9mbLo-bDUc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1050623269202-6cnri41ni56bep92gu8coi1fu1rurkbu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1050623269202-ind1nfjohpb4a8lbqt9odb95i670am9q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jetblaze.dixitgo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

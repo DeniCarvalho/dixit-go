@@ -1,8 +1,6 @@
+import '../../components/components.dart';
 import 'package:flutter/material.dart';
 
-import '../../components/background_component.dart';
-import '../../components/logo_component.dart';
-import '../../core/app_router.dart';
 import '../../core/core.dart';
 
 class SplashPage extends StatefulWidget {
