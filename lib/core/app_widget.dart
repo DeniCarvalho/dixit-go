@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get/get.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+
 import '../internationalization/appLocalizations.dart';
-import './core.dart';
+import 'core.dart';
 
 class AppWidget extends StatefulWidget {
-  final Widget defaultHome;
-  final Route<dynamic>? Function(RouteSettings)? routes;
-  AppWidget({
-    required this.defaultHome,
-    required this.routes,
-  });
-
   @override
   _AppWidgetState createState() => _AppWidgetState();
 }
@@ -46,34 +40,46 @@ class _AppWidgetState extends State<AppWidget> {
           Brightness.light, //navigation bar icons' color
     ));
 
-    return GestureDetector(
-      onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return OrientationBuilder(
+          builder: (context, orientation) {
+            SizeConfig.init().config(constraints, orientation);
+            return GestureDetector(
+              onTap: () {
+                FocusScopeNode currentFocus = FocusScope.of(context);
 
-        if (!currentFocus.hasPrimaryFocus) {
-          currentFocus.requestFocus(new FocusNode());
-        }
+                if (!currentFocus.hasPrimaryFocus) {
+                  currentFocus.requestFocus(new FocusNode());
+                }
+              },
+              child: MaterialApp(
+                title: "Dixit Go!",
+                initialRoute: Modular.initialRoute,
+                debugShowCheckedModeBanner: false,
+                themeMode: ThemeMode.system,
+                theme: ThemeData(
+                  // scaffoldBackgroundColor: AppColors.primary,
+                  // primaryColor: AppColors.primary,
+                  canvasColor: AppColors.primary,
+                ),
+                supportedLocales: [
+                  Locale('en', 'US'),
+                  Locale('pt', 'BR'),
+                ],
+                localizationsDelegates: [
+                  AppLocalizations.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                // home: const SplashPage(),
+                // onGenerateRoute: widget.routes,
+              ).modular(),
+            );
+          },
+        );
       },
-      child: MaterialApp(
-        title: "Dixit Go!",
-        debugShowCheckedModeBanner: false,
-        navigatorKey: Get.key,
-        theme: ThemeData(
-          scaffoldBackgroundColor: AppColors.primary,
-        ),
-        supportedLocales: [
-          Locale('en', 'US'),
-          Locale('pt', 'BR'),
-        ],
-        localizationsDelegates: [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        home: widget.defaultHome,
-        onGenerateRoute: widget.routes,
-      ),
     );
   }
 }

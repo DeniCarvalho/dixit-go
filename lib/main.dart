@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:dixit_go/core/app_router.dart';
+import 'package:dixit_go/core/app_main.dart';
 import 'package:flutter/material.dart';
 
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -26,5 +26,6 @@ void main() async {
   // initializeDateFormatting('pt_BR', null);
   // Intl.defaultLocale = 'pt_BR';
   // await DotEnv().load(prod);
-  AppRouter();
+
+  await runBaseApp();
 }

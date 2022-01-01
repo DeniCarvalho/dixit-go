@@ -1,8 +1,6 @@
-export './app_colors.dart';
-export './app_gradients.dart';
+export './app_main.dart';
+export './app_module.dart';
 export './app_widget.dart';
-export './app_text_styles.dart';
-export './app_images.dart';
-export './app_router.dart';
-export './app_transaction_fade.dart';
-export './responsive/responsive.dart';
+export './components/components.dart';
+export './theme/theme.dart';
+export './utils/utils.dart';
