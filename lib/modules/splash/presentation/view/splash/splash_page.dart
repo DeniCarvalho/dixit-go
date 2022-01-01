@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../../../core/core.dart';
-import '../../../../home/home_module.dart';
 import '../../mixin/mixin.dart';
 
 ///
@@ -41,6 +40,7 @@ class _SplashPageState extends State<SplashPage> with PostFrameMixin {
     precacheImage(AssetImage(AppImages.bgHome), _context).then((value) {
       // Nav.pushReplacementNamed('/home', arguments: OrigemEnum.splash);
       Nav.navigate(HomeRoutes.home.asHomeChild);
+      SystemChrome.restoreSystemUIOverlays();
     });
   }
 
@@ -75,26 +75,6 @@ class _SplashPageState extends State<SplashPage> with PostFrameMixin {
           ),
         ],
       ),
-      // body: Container(
-      //   decoration: BoxDecoration(
-      //     gradient: AppGradients.linear,
-      //   ),
-      //   child: new Stack(
-      //     fit: StackFit.expand,
-      //     children: <Widget>[
-      //       new Column(
-      //         crossAxisAlignment: CrossAxisAlignment.center,
-      //         mainAxisAlignment: MainAxisAlignment.center,
-      //         children: [
-      //           Container(
-      //             // margin: const EdgeInsets.only(bottom: 30),
-      //             child: LogoComponent(height: 80),
-      //           ),
-      //         ],
-      //       ),
-      //     ],
-      //   ),
-      // ),
     );
   }
 }
