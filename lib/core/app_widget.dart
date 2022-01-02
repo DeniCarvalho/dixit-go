@@ -7,6 +7,8 @@ import '../internationalization/appLocalizations.dart';
 import 'core.dart';
 
 class AppWidget extends StatefulWidget {
+  /// Creates a [AppWidget]
+  const AppWidget({Key? key}) : super(key: key);
   @override
   _AppWidgetState createState() => _AppWidgetState();
 }
@@ -32,54 +34,43 @@ class _AppWidgetState extends State<AppWidget> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.black, // navigation bar color
-      statusBarColor: Colors.transparent, // status bar color
-      statusBarIconBrightness: Brightness.light, // status bar icons' color
-      systemNavigationBarIconBrightness:
-          Brightness.light, //navigation bar icons' color
-    ));
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.black,
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+        systemNavigationBarIconBrightness: Brightness.light,
+      ),
+    );
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return OrientationBuilder(
-          builder: (context, orientation) {
-            SizeConfig.init().config(constraints, orientation);
-            return GestureDetector(
-              onTap: () {
-                FocusScopeNode currentFocus = FocusScope.of(context);
-
-                if (!currentFocus.hasPrimaryFocus) {
-                  currentFocus.requestFocus(new FocusNode());
-                }
-              },
-              child: MaterialApp(
-                title: "Dixit Go!",
-                initialRoute: Modular.initialRoute,
-                debugShowCheckedModeBanner: false,
-                themeMode: ThemeMode.system,
-                theme: ThemeData(
-                  // scaffoldBackgroundColor: AppColors.primary,
-                  // primaryColor: AppColors.primary,
-                  canvasColor: AppColors.primary,
-                ),
-                supportedLocales: [
-                  Locale('en', 'US'),
-                  Locale('pt', 'BR'),
-                ],
-                localizationsDelegates: [
-                  AppLocalizations.delegate,
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                ],
-                // home: const SplashPage(),
-                // onGenerateRoute: widget.routes,
-              ).modular(),
-            );
-          },
-        );
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.requestFocus(new FocusNode());
+        }
       },
+      child: MaterialApp(
+        title: "Dixit Go!",
+        initialRoute: Modular.initialRoute,
+        debugShowCheckedModeBanner: false,
+        themeMode: ThemeMode.system,
+        theme: ThemeData(
+          scaffoldBackgroundColor: AppColors.primary,
+          primaryColor: AppColors.primary,
+          canvasColor: AppColors.primary,
+        ),
+        supportedLocales: [
+          Locale('en', 'US'),
+          Locale('pt', 'BR'),
+        ],
+        localizationsDelegates: [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+      ).modular(),
     );
   }
 }

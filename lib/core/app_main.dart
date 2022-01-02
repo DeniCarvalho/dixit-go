@@ -8,7 +8,7 @@ Future<void> runBaseApp() async {
   runApp(
     ModularApp(
       module: AppModule(),
-      child: AppWidget(),
+      child: const AppWidget(),
     ),
   );
 }

@@ -31,14 +31,12 @@ class _SplashPageState extends State<SplashPage> with PostFrameMixin {
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
     );
-
     postFrame(_navigateAfterStart);
   }
 
   Future<void> _navigateAfterStart() async {
-    await Future.delayed(new Duration(seconds: 2));
+    await Future.delayed(new Duration(seconds: 3));
     precacheImage(AssetImage(AppImages.bgHome), _context).then((value) {
-      // Nav.pushReplacementNamed('/home', arguments: OrigemEnum.splash);
       Nav.navigate(HomeRoutes.home.asHomeChild);
       SystemChrome.restoreSystemUIOverlays();
     });
@@ -47,34 +45,43 @@ class _SplashPageState extends State<SplashPage> with PostFrameMixin {
   @override
   Widget build(BuildContext context) {
     _context = context;
-    return Scaffold(
-      body: new Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          Container(
-            child: BackgroundComponent(
-              isFilter: true,
-              image: Image.asset(
-                AppImages.bgHomeBlur,
-                gaplessPlayback: true,
-              ).image,
-            ),
-          ),
-          new Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                child: LogoComponent(
-                  height: 100.responsiveHeight,
-                  top: 30.responsiveHeight,
-                  isHero: false,
-                ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return OrientationBuilder(
+          builder: (context, orientation) {
+            SizeConfig.init().config(constraints, orientation);
+            return Scaffold(
+              body: new Stack(
+                fit: StackFit.expand,
+                children: <Widget>[
+                  Container(
+                    child: BackgroundComponent(
+                      isFilter: true,
+                      image: Image.asset(
+                        AppImages.bgHomeBlur,
+                        gaplessPlayback: true,
+                      ).image,
+                    ),
+                  ),
+                  new Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        child: LogoComponent(
+                          height: 100.responsiveHeight,
+                          top: 30.responsiveHeight,
+                          isHero: false,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ],
-          ),
-        ],
-      ),
+            );
+          },
+        );
+      },
     );
   }
 }
