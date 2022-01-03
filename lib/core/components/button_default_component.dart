@@ -10,6 +10,8 @@ class ButtonDefaultComponent extends StatelessWidget {
   final double fontSize;
   final VoidCallback action;
   final double widthFactor;
+  final Color? shadowColor;
+  final double elevation;
   const ButtonDefaultComponent({
     Key? key,
     required this.text,
@@ -18,36 +20,51 @@ class ButtonDefaultComponent extends StatelessWidget {
     this.fontSize = 15,
     required this.action,
     this.widthFactor = 0.8,
+    this.shadowColor,
+    this.elevation = 0.0,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
       widthFactor: widthFactor,
-      child: TextButton(
-        child: Text(
-          text,
-          style: GoogleFonts.breeSerif(
-            color: color ?? AppColors.light,
-          ),
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            if (shadowColor != null)
+              BoxShadow(
+                color: shadowColor ?? AppColors.quinary,
+                spreadRadius: -15,
+                blurRadius: 50,
+              )
+          ],
         ),
-        style: ButtonStyle(
-          overlayColor: MaterialStateProperty.all(
-            (backgroundColor ?? Colors.transparent),
-          ),
-          backgroundColor: MaterialStateProperty.all(
-            backgroundColor ?? AppColors.contrastSecundary,
-          ),
-          textStyle: MaterialStateProperty.all(
-            TextStyle(
-              fontSize: 15.fontSize,
+        child: TextButton(
+          child: Text(
+            text,
+            style: GoogleFonts.breeSerif(
+              color: color ?? AppColors.light,
             ),
           ),
-          padding: MaterialStateProperty.all(
-            EdgeInsets.symmetric(vertical: 12),
+          style: ButtonStyle(
+            overlayColor: MaterialStateProperty.all(
+              (backgroundColor ?? Colors.transparent),
+            ),
+            elevation: MaterialStateProperty.all(0.0),
+            backgroundColor: MaterialStateProperty.all(
+              backgroundColor ?? AppColors.contrastSecundary,
+            ),
+            textStyle: MaterialStateProperty.all(
+              TextStyle(
+                fontSize: 15.fontSize,
+              ),
+            ),
+            padding: MaterialStateProperty.all(
+              EdgeInsets.symmetric(vertical: 12),
+            ),
           ),
+          onPressed: action,
         ),
-        onPressed: action,
       ),
     );
   }

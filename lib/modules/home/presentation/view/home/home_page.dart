@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             LogoComponent(
-              height: 50.responsiveHeight,
+              height: 50.responsiveWidth,
               isHero: true,
             ),
             Text(
@@ -120,25 +120,26 @@ class _HomePageState extends State<HomePage> {
           Align(
             alignment: Alignment.bottomCenter,
             child: ValueListenableBuilder(
-                valueListenable: showJoinButton,
-                builder: (_, dynamic showJoinButtonValue, child) {
-                  return Padding(
-                    padding: EdgeInsets.only(
-                        bottom: showJoinButtonValue
-                            ? 15.responsiveHeight
-                            : 40.responsiveHeight),
-                    child: ValueListenableBuilder(
-                      valueListenable: _visible,
-                      builder: (_, dynamic _visibleValue, child) {
-                        return AnimatedOpacity(
-                          opacity: _visibleValue ? 1 : 0,
-                          duration: _durationShow,
-                          child: buttonStart(showJoinButtonValue),
-                        );
-                      },
-                    ),
-                  );
-                }),
+              valueListenable: showJoinButton,
+              builder: (_, dynamic showJoinButtonValue, child) {
+                return Padding(
+                  padding: EdgeInsets.only(
+                      bottom: showJoinButtonValue
+                          ? 15.responsiveHeight
+                          : 40.responsiveHeight),
+                  child: ValueListenableBuilder(
+                    valueListenable: _visible,
+                    builder: (_, dynamic _visibleValue, child) {
+                      return AnimatedOpacity(
+                        opacity: _visibleValue ? 1 : 0,
+                        duration: _durationShow,
+                        child: buttonStart(showJoinButtonValue),
+                      );
+                    },
+                  ),
+                );
+              },
+            ),
           ),
         ],
       );
@@ -188,6 +189,8 @@ class _HomePageState extends State<HomePage> {
     return !valueListen
         ? ButtonDefaultComponent(
             text: 'go'.i18n(context).toUpperCase(),
+            // elevation: 15,
+            // shadowColor: AppColors.quinary,
             action: () async {
               double index =
                   MediaQuery.of(context).size.height * 0.1.responsiveHeight;

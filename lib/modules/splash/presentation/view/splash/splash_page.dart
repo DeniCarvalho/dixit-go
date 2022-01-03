@@ -74,7 +74,7 @@ class _SplashPageState extends State<SplashPage> with PostFrameMixin {
                     children: [
                       Container(
                         child: LogoComponent(
-                          height: 60.responsiveHeight,
+                          height: 60.responsiveWidth,
                           top: 120.responsiveHeight,
                           isHero: true,
                         ),

@@ -12,7 +12,7 @@ class AppTextStyles {
   );
   static final TextStyle subTitle = TextStyle(
     color: AppColors.primary,
-    fontSize: 15.fontSize,
+    fontSize: 15.responsiveWidth,
     fontWeight: FontWeight.w400,
   );
 

@@ -8,7 +8,7 @@ class AppColors {
   static final Color quaternary = Color(0xFF268CAF);
   static final Color light = Color(0xFFffffff);
 
-  static final Color quinary = Color(0xFFD0C8C4);
+  static final Color quinary = Color(0xFF4bafd1);
   static final Color contrastPrimary = Color(0xFF042a33);
   static final Color contrastSecundary = Color(0xFF063f4f);
 
