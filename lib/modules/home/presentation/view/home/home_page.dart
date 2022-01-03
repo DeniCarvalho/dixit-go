@@ -1,8 +1,7 @@
-import 'package:auto_size_text/auto_size_text.dart';
+import 'package:dixit_go/internationalization/i18n_extension.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/core.dart';
-import '../../../../../internationalization/i18n_extension.dart';
 import '../../../home_module.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,9 +16,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool _visible = false;
-  late double btn1Width = 0.0;
-  late double btn2Width = 0.0;
+  final _visible = ValueNotifier<bool>(false);
+  final showJoinButton = ValueNotifier<bool>(false);
+  static final _durationShow = const Duration(milliseconds: 250);
+  static final _durationPage = const Duration(seconds: 1);
 
   late PageController controllerPage;
   //234.3333485921224
@@ -36,22 +36,7 @@ class _HomePageState extends State<HomePage> {
 
   initPage() async {
     await Future.delayed(new Duration(milliseconds: 500));
-
-    setState(() {
-      btn1Width = MediaQuery.of(context).size.width;
-      btn2Width = MediaQuery.of(context).size.width;
-    });
-    double index = MediaQuery.of(context).size.height * 0.3;
-    controllerPage.animateTo(
-      index,
-      duration: const Duration(seconds: 1),
-      curve: Curves.ease,
-    );
-    await Future.delayed(new Duration(milliseconds: 200));
-    setState(() {
-      btn1Width = MediaQuery.of(context).size.width * 0.78;
-      btn2Width = MediaQuery.of(context).size.width * 0.78;
-    });
+    _visible.value = true;
   }
 
   @override
@@ -60,19 +45,17 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  bool get showWidgets => widget.origem != OrigemEnum.splash ? true : _visible;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primary,
+      backgroundColor: AppColors.backgroundColor,
       body: Stack(
         children: [
           PageView(
             controller: controllerPage,
             scrollDirection: Axis.vertical,
-            physics: const ClampingScrollPhysics(),
-            // physics: const NeverScrollableScrollPhysics(),
+            // physics: const ClampingScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             pageSnapping: false,
             children: [
               Stack(
@@ -93,147 +76,71 @@ class _HomePageState extends State<HomePage> {
                     child: BirdAnimation(
                       width: double.infinity,
                       height: double.infinity,
-                      // reverse: true,
                     ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: ValueListenableBuilder(
+                        valueListenable: showJoinButton,
+                        builder: (_, dynamic showJoinButtonValue, child) {
+                          return Padding(
+                            padding: EdgeInsets.only(
+                                bottom: showJoinButtonValue
+                                    ? 15.responsiveHeight
+                                    : 40.responsiveHeight),
+                            child: ValueListenableBuilder(
+                              valueListenable: _visible,
+                              builder: (_, dynamic _visibleValue, child) {
+                                return AnimatedOpacity(
+                                  opacity: _visibleValue ? 1 : 0,
+                                  duration: _durationShow,
+                                  child: buttonStart(showJoinButtonValue),
+                                );
+                              },
+                            ),
+                          );
+                        }),
                   ),
                 ],
               ),
               Stack(
+                alignment: AlignmentDirectional.center,
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: Color(0xFF135667),
+                      color: AppColors.backgroundColor,
                     ),
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AnimatedContainer(
-                            duration: const Duration(seconds: 1),
-                            curve: Curves.fastOutSlowIn,
-                            width: btn1Width,
-                            decoration: BoxDecoration(
-                              color: AppColors.ligth.withOpacity(0.9),
-                              borderRadius: const BorderRadius.only(
-                                bottomRight: Radius.circular(20),
-                                topRight: Radius.circular(20),
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: AppColors.contrastPrimary,
-                                  offset: Offset(2, 2),
-                                  spreadRadius: 1,
-                                  blurRadius: 3,
-                                )
-                              ],
-                            ),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                border: Border(
-                                  left: BorderSide(
-                                    color: AppColors.contrastPrimary,
-                                    width: 8.0,
-                                  ),
-                                ),
-                              ),
-                              child: ListTile(
-                                contentPadding: EdgeInsets.symmetric(
-                                  vertical: 5.responsiveHeight,
-                                  horizontal: 15.responsiveWidth,
-                                ),
-                                leading: Icon(
-                                  Icons.golf_course,
-                                  size: 35.fontSize,
-                                ),
-                                title: Text(
-                                  'newGame'.i18n(context),
-                                  style: AppTextStyles.heading,
-                                  maxLines: 1,
-                                ),
-                                subtitle: AutoSizeText(
-                                  'newGameDescription'.i18n(context),
-                                  presetFontSizes: [14.fontSize],
-                                  maxLines: 1,
-                                ),
-                                trailing: null,
-                              ),
-                            ),
+                  ValueListenableBuilder(
+                      valueListenable: _visible,
+                      builder: (_, dynamic _visibleValue, child) {
+                        return AnimatedOpacity(
+                          opacity: _visibleValue ? 1 : 0,
+                          duration: _durationShow,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ButtonDefaultComponent(
+                                text: 'joinGame'.i18n(context).toUpperCase(),
+                                action: () {
+                                  _visible.value = false;
+                                  controllerPage
+                                      .animateTo(
+                                    0.0,
+                                    duration: _durationPage,
+                                    curve: Curves.ease,
+                                  )
+                                      .whenComplete(() {
+                                    showJoinButton.value = false;
+                                    _visible.value = true;
+                                  });
+                                },
+                              )
+                            ],
                           ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 30.responsiveHeight,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AnimatedContainer(
-                            duration: const Duration(milliseconds: 800),
-                            curve: Curves.fastOutSlowIn,
-                            width: btn2Width,
-                            decoration: BoxDecoration(
-                              color:
-                                  AppColors.contrastSecundary.withOpacity(0.9),
-                              borderRadius: const BorderRadius.only(
-                                bottomLeft: Radius.circular(20),
-                                topLeft: Radius.circular(20),
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: AppColors.contrastPrimary,
-                                  offset: Offset(2, 2),
-                                  spreadRadius: 1,
-                                  blurRadius: 3,
-                                )
-                              ],
-                            ),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                border: Border(
-                                  right: BorderSide(
-                                    color: AppColors.contrastPrimary,
-                                    width: 8.0,
-                                  ),
-                                ),
-                              ),
-                              child: ListTile(
-                                contentPadding: EdgeInsets.symmetric(
-                                  vertical: 5.responsiveHeight,
-                                  horizontal: 15.responsiveWidth,
-                                ),
-                                leading: null,
-                                title: Text(
-                                  'joinGame'.i18n(context),
-                                  style: AppTextStyles.headingDark,
-                                  maxLines: 1,
-                                  textAlign: TextAlign.end,
-                                ),
-                                subtitle: AutoSizeText(
-                                  'joinGameDescription'.i18n(context),
-                                  maxLines: 1,
-                                  textAlign: TextAlign.end,
-                                  style: AppTextStyles.body12,
-                                ),
-                                trailing: Icon(
-                                  Icons.open_in_browser,
-                                  size: 35.fontSize,
-                                  color: AppColors.ligth,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                        );
+                      }),
                 ],
               ),
             ],
@@ -258,8 +165,7 @@ class _HomePageState extends State<HomePage> {
                     isHero: true,
                   ),
                   Text(
-                    'Aqui uma simples imagem vale\nmais do que mil palavras!',
-                    // '${'hello'.i18n(context).toLowerCase()}',
+                    'description'.i18n(context),
                     style: AppTextStyles.subTitleHome,
                     textAlign: TextAlign.center,
                   ),
@@ -270,5 +176,45 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
+  }
+
+  Widget buttonStart(bool valueListen) {
+    return !valueListen
+        ? ButtonDefaultComponent(
+            text: 'go'.i18n(context).toUpperCase(),
+            action: () async {
+              double index =
+                  MediaQuery.of(context).size.height * 0.1.responsiveHeight;
+              _visible.value = false;
+              controllerPage
+                  .animateTo(
+                index,
+                duration: _durationPage,
+                curve: Curves.ease,
+              )
+                  .whenComplete(() {
+                showJoinButton.value = true;
+                _visible.value = true;
+              });
+            },
+          )
+        : ButtonDefaultComponent(
+            text: 'newGame'.i18n(context).toUpperCase(),
+            color: AppColors.contrastPrimary,
+            backgroundColor: AppColors.light,
+            action: () {
+              _visible.value = false;
+              controllerPage
+                  .animateTo(
+                0.0,
+                duration: _durationPage,
+                curve: Curves.ease,
+              )
+                  .whenComplete(() {
+                showJoinButton.value = false;
+                _visible.value = true;
+              });
+            },
+          );
   }
 }

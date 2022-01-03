@@ -6,12 +6,14 @@ class AppColors {
   static final Color secundary = Color(0xFF166276);
   static final Color tertiary = Color(0xFF0F8094);
   static final Color quaternary = Color(0xFF268CAF);
-  static final Color ligth = Color(0xFFffffff);
+  static final Color light = Color(0xFFffffff);
 
   static final Color quinary = Color(0xFFD0C8C4);
   static final Color gold = Color(0xFFEAC289);
   static final Color contrastPrimary = Color(0xFF042a33);
   static final Color contrastSecundary = Color(0xFF063f4f);
+
+  static final Color backgroundColor = Color(0xFF135667);
 
   static final Color danger = Colors.red.shade400;
 

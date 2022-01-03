@@ -1,7 +1,8 @@
 {
     "hello": "Hi",
-    "readyImagination": "ready to use your imagination?",
+    "description": "Aqui uma simples imagem vale\nmais do que mil palavras!",
     "wantDo": "What do you want to do?",
+    "go": "Go",
     "newGame": "New game",
     "newGameDescription": "Start a game from scratch",
     "joinGame": "Join in game",
