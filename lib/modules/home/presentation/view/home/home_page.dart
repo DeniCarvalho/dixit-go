@@ -58,125 +58,131 @@ class _HomePageState extends State<HomePage> {
             physics: const NeverScrollableScrollPhysics(),
             pageSnapping: false,
             children: [
-              Stack(
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: Image.asset(
-                          AppImages.background,
-                          gaplessPlayback: true,
-                        ).image,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: BirdAnimation(
-                      width: double.infinity,
-                      height: double.infinity,
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: ValueListenableBuilder(
-                        valueListenable: showJoinButton,
-                        builder: (_, dynamic showJoinButtonValue, child) {
-                          return Padding(
-                            padding: EdgeInsets.only(
-                                bottom: showJoinButtonValue
-                                    ? 15.responsiveHeight
-                                    : 40.responsiveHeight),
-                            child: ValueListenableBuilder(
-                              valueListenable: _visible,
-                              builder: (_, dynamic _visibleValue, child) {
-                                return AnimatedOpacity(
-                                  opacity: _visibleValue ? 1 : 0,
-                                  duration: _durationShow,
-                                  child: buttonStart(showJoinButtonValue),
-                                );
-                              },
-                            ),
-                          );
-                        }),
-                  ),
-                ],
-              ),
-              Stack(
-                alignment: AlignmentDirectional.center,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.backgroundColor,
-                    ),
-                  ),
-                  ValueListenableBuilder(
-                      valueListenable: _visible,
-                      builder: (_, dynamic _visibleValue, child) {
-                        return AnimatedOpacity(
-                          opacity: _visibleValue ? 1 : 0,
-                          duration: _durationShow,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ButtonDefaultComponent(
-                                text: 'joinGame'.i18n(context).toUpperCase(),
-                                action: () {
-                                  _visible.value = false;
-                                  controllerPage
-                                      .animateTo(
-                                    0.0,
-                                    duration: _durationPage,
-                                    curve: Curves.ease,
-                                  )
-                                      .whenComplete(() {
-                                    showJoinButton.value = false;
-                                    _visible.value = true;
-                                  });
-                                },
-                              )
-                            ],
-                          ),
-                        );
-                      }),
-                ],
-              ),
+              introPageView,
+              actionPageView,
             ],
           ),
           Positioned(
             top: 0,
             left: 0,
             right: 0,
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(
-                vertical: 50.responsiveHeight,
-                horizontal: 15.responsiveWidth,
-              ),
-              color: Colors.transparent,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  LogoComponent(
-                    height: 50.responsiveHeight,
-                    isHero: true,
-                  ),
-                  Text(
-                    'description'.i18n(context),
-                    style: AppTextStyles.subTitle,
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
-            ),
+            child: titleWelcome,
           ),
         ],
       ),
     );
   }
+
+  Widget get titleWelcome => Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(
+          vertical: 50.responsiveHeight,
+          horizontal: 15.responsiveWidth,
+        ),
+        color: Colors.transparent,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            LogoComponent(
+              height: 50.responsiveHeight,
+              isHero: true,
+            ),
+            Text(
+              'description'.i18n(context),
+              style: AppTextStyles.subTitle,
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      );
+
+  Widget get introPageView => Stack(
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: Image.asset(
+                  AppImages.background,
+                  gaplessPlayback: true,
+                ).image,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: BirdAnimation(
+              width: double.infinity,
+              height: double.infinity,
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: ValueListenableBuilder(
+                valueListenable: showJoinButton,
+                builder: (_, dynamic showJoinButtonValue, child) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                        bottom: showJoinButtonValue
+                            ? 15.responsiveHeight
+                            : 40.responsiveHeight),
+                    child: ValueListenableBuilder(
+                      valueListenable: _visible,
+                      builder: (_, dynamic _visibleValue, child) {
+                        return AnimatedOpacity(
+                          opacity: _visibleValue ? 1 : 0,
+                          duration: _durationShow,
+                          child: buttonStart(showJoinButtonValue),
+                        );
+                      },
+                    ),
+                  );
+                }),
+          ),
+        ],
+      );
+
+  Widget get actionPageView => Stack(
+        alignment: AlignmentDirectional.center,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: AppColors.backgroundColor,
+            ),
+          ),
+          ValueListenableBuilder(
+              valueListenable: _visible,
+              builder: (_, dynamic _visibleValue, child) {
+                return AnimatedOpacity(
+                  opacity: _visibleValue ? 1 : 0,
+                  duration: _durationShow,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ButtonDefaultComponent(
+                        text: 'joinGame'.i18n(context).toUpperCase(),
+                        action: () {
+                          _visible.value = false;
+                          controllerPage
+                              .animateTo(
+                            0.0,
+                            duration: _durationPage,
+                            curve: Curves.ease,
+                          )
+                              .whenComplete(() {
+                            showJoinButton.value = false;
+                            _visible.value = true;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                );
+              }),
+        ],
+      );
 
   Widget buttonStart(bool valueListen) {
     return !valueListen
