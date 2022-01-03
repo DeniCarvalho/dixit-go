@@ -45,7 +45,7 @@ class TitleWidget extends StatelessWidget {
               children: [
                 Text(
                   'awaiting'.i18n(context).toLowerCase(),
-                  style: AppTextStyles.headingGame,
+                  style: AppTextStyles.body,
                 ),
                 SizedBox(
                   width: 20.responsiveWidth,
@@ -55,7 +55,7 @@ class TitleWidget extends StatelessWidget {
                     animatedTexts: [
                       TyperAnimatedText(
                         '...',
-                        textStyle: AppTextStyles.headingGame,
+                        textStyle: AppTextStyles.body,
                         speed: const Duration(milliseconds: 650),
                       ),
                     ],

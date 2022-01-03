@@ -50,11 +50,11 @@ class _CenterWidgetState extends State<CenterWidget> {
                 animatedTexts: [
                   FadeAnimatedText(
                     'Já vamos começar',
-                    textStyle: AppTextStyles.titleBanner,
+                    textStyle: AppTextStyles.body,
                   ),
                   FadeAnimatedText(
                     'sua cor será:',
-                    textStyle: AppTextStyles.titleBanner,
+                    textStyle: AppTextStyles.body,
                   ),
                 ],
                 onFinished: () {

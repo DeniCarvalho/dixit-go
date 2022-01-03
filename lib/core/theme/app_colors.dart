@@ -9,7 +9,6 @@ class AppColors {
   static final Color light = Color(0xFFffffff);
 
   static final Color quinary = Color(0xFFD0C8C4);
-  static final Color gold = Color(0xFFEAC289);
   static final Color contrastPrimary = Color(0xFF042a33);
   static final Color contrastSecundary = Color(0xFF063f4f);
 

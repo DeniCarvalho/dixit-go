@@ -106,7 +106,7 @@ class _PlayerEmptyWidgetState extends State<PlayerEmptyWidget>
                       )
                     : Text(
                         (this.widget.index + 1).toString(),
-                        style: AppTextStyles.title,
+                        style: AppTextStyles.body,
                       ),
               ),
             ),
@@ -119,7 +119,7 @@ class _PlayerEmptyWidgetState extends State<PlayerEmptyWidget>
               padding: EdgeInsets.only(top: 8.responsiveHeight),
               child: Text(
                 widget.user?.username ?? '--',
-                style: AppTextStyles.bodyWhite15,
+                style: AppTextStyles.body,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
@@ -163,7 +163,7 @@ class _PlayerEmptyWidgetState extends State<PlayerEmptyWidget>
                   children: [
                     Text(
                       "Nome",
-                      style: AppTextStyles.heading15,
+                      style: AppTextStyles.body,
                     ),
                     Text(
                       widget.user?.name ?? '',
@@ -181,7 +181,7 @@ class _PlayerEmptyWidgetState extends State<PlayerEmptyWidget>
                   children: [
                     Text(
                       "Email",
-                      style: AppTextStyles.heading15,
+                      style: AppTextStyles.body,
                     ),
                     Text(
                       widget.user?.email ?? '',
@@ -199,7 +199,7 @@ class _PlayerEmptyWidgetState extends State<PlayerEmptyWidget>
                   children: [
                     Text(
                       "Usuário",
-                      style: AppTextStyles.heading15,
+                      style: AppTextStyles.body,
                     ),
                     Text(
                       widget.user?.username ?? '',

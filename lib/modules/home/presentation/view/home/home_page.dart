@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   final _visible = ValueNotifier<bool>(false);
   final showJoinButton = ValueNotifier<bool>(false);
   static final _durationShow = const Duration(milliseconds: 250);
-  static final _durationPage = const Duration(seconds: 1);
+  static final _durationPage = const Duration(milliseconds: 850);
 
   late PageController controllerPage;
   //234.3333485921224
@@ -166,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Text(
                     'description'.i18n(context),
-                    style: AppTextStyles.subTitleHome,
+                    style: AppTextStyles.subTitle,
                     textAlign: TextAlign.center,
                   ),
                 ],
