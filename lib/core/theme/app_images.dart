@@ -8,11 +8,7 @@ class AppImages {
 
   static String get logo => "assets/images/logo.png";
   static String get logoDark => "assets/images/logo_dark.png";
-  static String get bgHome => "assets/images/bg.png";
-  static String get bgHomeBlur => "assets/images/bg_blur.png";
-  static String get bgRepeat => "assets/images/bg-repeat.png";
   static String get background => "assets/images/background.png";
-  static String get backgroundRepeat => "assets/images/cubo_bg.png";
   static String get avatar1 => _avatar1;
   static String get avatar2 => _avatar2;
   static String get avatar3 => _avatar3;

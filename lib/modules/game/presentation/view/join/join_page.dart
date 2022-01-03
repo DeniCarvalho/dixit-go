@@ -90,7 +90,7 @@ class _JoinPageState extends State<JoinPage> {
                 child: BackgroundComponent(
                   isFilter: true,
                   image: Image.asset(
-                    AppImages.bgHomeBlur,
+                    AppImages.background,
                     gaplessPlayback: true,
                   ).image,
                 ),
