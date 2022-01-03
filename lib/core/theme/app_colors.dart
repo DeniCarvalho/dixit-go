@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static final Color primary = Color(0xFFE58888);
-  static final Color secundary = Color(0xFFF1A382);
-  static final Color tertiary = Color(0xFFffffff);
-  static final Color quaternary = Color(0xFFB5AAA7);
+  static final Color primary = Color(0xFF10495A);
+
+  static final Color secundary = Color(0xFF166276);
+  static final Color tertiary = Color(0xFF0F8094);
+  static final Color quaternary = Color(0xFF268CAF);
+  static final Color ligth = Color(0xFFffffff);
+
   static final Color quinary = Color(0xFFD0C8C4);
   static final Color gold = Color(0xFFEAC289);
-  static final Color contrastPrimary = Color(0xFF5A3B6F);
-  static final Color contrastSecundary = Color(0xFF775089);
+  static final Color contrastPrimary = Color(0xFF042a33);
+  static final Color contrastSecundary = Color(0xFF063f4f);
 
   static final Color danger = Colors.red.shade400;
 

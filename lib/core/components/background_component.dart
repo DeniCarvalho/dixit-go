@@ -5,17 +5,23 @@ import 'package:flutter/material.dart';
 class BackgroundComponent extends StatelessWidget {
   final ImageProvider image;
   final bool isFilter;
+  final AlignmentGeometry alignment;
+
   BackgroundComponent({
     required this.image,
     this.isFilter = false,
+    this.alignment = Alignment.center,
   });
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 800),
+      curve: Curves.fastOutSlowIn,
       decoration: new BoxDecoration(
         image: new DecorationImage(
           image: image,
           fit: BoxFit.cover,
+          alignment: alignment,
           colorFilter: this.isFilter
               ? new ColorFilter.mode(
                   Colors.black.withOpacity(1.0),

@@ -22,6 +22,7 @@ class _AppWidgetState extends State<AppWidget> {
   /// Did Change Dependencies
   @override
   void didChangeDependencies() {
+    precacheImage(AssetImage(AppImages.background), context);
     precacheImage(AssetImage(AppImages.avatar1), context);
     precacheImage(AssetImage(AppImages.avatar2), context);
     precacheImage(AssetImage(AppImages.avatar3), context);

@@ -36,6 +36,8 @@ dependencies:
   transparent_image: ^2.0.0
   rect_getter: ^1.0.0
   auto_size_text: ^3.0.0
+  flutter_svg: ^0.22.0
+  lottie: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -54,14 +56,13 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/i18n/
-    - assets/images/bg.png
-    - assets/images/2.0x/bg.png
-    - assets/images/3.0x/bg.png
-    - assets/images/bg-repeat.png
-    - assets/images/2.0x/bg-repeat.png
-    - assets/images/3.0x/bg-repeat.png
     - assets/images/
     - assets/images/avatar/
+    - assets/images/cards/
+    - assets/images/pin/
+    - assets/images/2.0x/
+    - assets/images/3.0x/
+    - assets/animations/
 
   #   - images/a_dot_ham.jpeg
 

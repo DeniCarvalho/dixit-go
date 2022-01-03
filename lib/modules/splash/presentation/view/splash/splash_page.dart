@@ -17,7 +17,7 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> with PostFrameMixin {
-  late BuildContext _context;
+  late bool blur = true;
 
   @override
   void initState() {
@@ -35,16 +35,20 @@ class _SplashPageState extends State<SplashPage> with PostFrameMixin {
   }
 
   Future<void> _navigateAfterStart() async {
-    await Future.delayed(new Duration(seconds: 3));
-    precacheImage(AssetImage(AppImages.bgHome), _context).then((value) {
-      Nav.navigate(HomeRoutes.home.asHomeChild);
-      SystemChrome.restoreSystemUIOverlays();
+    await Future.delayed(new Duration(seconds: 1));
+    setState(() {
+      blur = false;
     });
+    await Future.delayed(new Duration(seconds: 2));
+    Nav.navigate(HomeRoutes.home.asHomeChild);
+    SystemChrome.restoreSystemUIOverlays();
+    // precacheImage(AssetImage(AppImages.background), _context).then((value) {
+
+    // });
   }
 
   @override
   Widget build(BuildContext context) {
-    _context = context;
     return LayoutBuilder(
       builder: (context, constraints) {
         return OrientationBuilder(
@@ -56,22 +60,23 @@ class _SplashPageState extends State<SplashPage> with PostFrameMixin {
                 children: <Widget>[
                   Container(
                     child: BackgroundComponent(
-                      isFilter: true,
+                      isFilter: blur,
+                      alignment: Alignment.center,
                       image: Image.asset(
-                        AppImages.bgHomeBlur,
+                        AppImages.background,
                         gaplessPlayback: true,
                       ).image,
                     ),
                   ),
                   new Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
                         child: LogoComponent(
-                          height: 100.responsiveHeight,
-                          top: 30.responsiveHeight,
-                          isHero: false,
+                          height: 60.responsiveHeight,
+                          top: 120.responsiveHeight,
+                          isHero: true,
                         ),
                       ),
                     ],

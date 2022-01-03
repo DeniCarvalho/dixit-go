@@ -1,9 +1,20 @@
+import 'package:dixit_go/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../utils/extensions/responsive_extension.dart';
 
 class AppTextStyles {
+  static final TextStyle titleHome = GoogleFonts.breeSerif(
+    color: AppColors.primary,
+    fontSize: 30.fontSize,
+    fontWeight: FontWeight.bold,
+  );
+  static final TextStyle subTitleHome = TextStyle(
+    color: AppColors.primary,
+    fontSize: 15.fontSize,
+    fontWeight: FontWeight.w400,
+  );
   static final TextStyle titleBanner = GoogleFonts.notoSans(
     color: Colors.white,
     fontSize: 30.fontSize,
@@ -33,7 +44,13 @@ class AppTextStyles {
   );
 
   static final TextStyle heading = GoogleFonts.notoSans(
-    color: Colors.black,
+    color: AppColors.secundary,
+    fontSize: 18.fontSize,
+    fontWeight: FontWeight.w600,
+  );
+
+  static final TextStyle headingDark = GoogleFonts.notoSans(
+    color: AppColors.ligth,
     fontSize: 18.fontSize,
     fontWeight: FontWeight.w600,
   );
@@ -100,9 +117,21 @@ class AppTextStyles {
     fontSize: 15.fontSize,
     fontWeight: FontWeight.normal,
   );
+
+  static final TextStyle body12 = GoogleFonts.notoSans(
+    color: AppColors.ligth,
+    fontSize: 12.fontSize,
+    fontWeight: FontWeight.w300,
+  );
   static final TextStyle body11 = GoogleFonts.notoSans(
     color: Colors.grey,
     fontSize: 11.fontSize,
     fontWeight: FontWeight.normal,
+  );
+
+  static final TextStyle body10 = GoogleFonts.notoSans(
+    color: AppColors.ligth,
+    fontSize: 10.fontSize,
+    fontWeight: FontWeight.w400,
   );
 }
