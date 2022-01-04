@@ -60,7 +60,7 @@ class ButtonDefaultComponent extends StatelessWidget {
               ),
             ),
             padding: MaterialStateProperty.all(
-              EdgeInsets.symmetric(vertical: 12),
+              EdgeInsets.symmetric(vertical: 10.responsiveHeight),
             ),
           ),
           onPressed: action,

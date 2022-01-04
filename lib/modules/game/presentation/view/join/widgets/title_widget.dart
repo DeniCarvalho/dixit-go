@@ -22,7 +22,7 @@ class TitleWidget extends StatelessWidget {
               height: 40.responsiveHeight,
               child: ElevatedButton(
                 onPressed: () {
-                  Nav.pop();
+                  Nav.navigate('/home');
                 },
                 style: ElevatedButton.styleFrom(
                   shape: CircleBorder(),
