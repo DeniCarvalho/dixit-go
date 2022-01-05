@@ -47,6 +47,7 @@ class SliderButton extends StatefulWidget {
   final bool disable;
 
   final FeedbackType type;
+  final List<BoxShadow>? boxShadowContainer;
 
   SliderButton({
     required this.action,
@@ -70,6 +71,7 @@ class SliderButton extends StatefulWidget {
     this.dismissThresholds = 0.75,
     this.disable = false,
     this.type = FeedbackType.success,
+    this.boxShadowContainer,
   }) : assert((buttonSize ?? 60) <= (height));
 
   @override
@@ -100,6 +102,7 @@ class _SliderButtonState extends State<SliderButton> {
         decoration: BoxDecoration(
           color: widget.backgroundColor,
           borderRadius: BorderRadius.circular(widget.radius),
+          boxShadow: widget.boxShadowContainer,
         ),
         alignment: Alignment.centerLeft,
         child: Stack(

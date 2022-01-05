@@ -10,5 +10,6 @@
     "helpPlayer": "Como jogar",
     "helpPlayerDescription": "Conheça as regras do jogo",
     "awaiting": "Aguadando",
-    "startGame": "Iniciar partida"
+    "startGame": "Iniciar partida",
+    "playersGame": "Jogadores da partida"
 }
