@@ -1,5 +1,6 @@
-import 'package:dixit_go/core/core.dart';
 import 'package:flutter/material.dart';
+
+import '../core.dart';
 
 class ButtonIconComponent extends StatelessWidget {
   final Widget icon;
@@ -23,14 +24,14 @@ class ButtonIconComponent extends StatelessWidget {
       child: ElevatedButton(
         onPressed: action,
         style: ElevatedButton.styleFrom(
-          shape: CircleBorder(),
+          shape: const CircleBorder(),
           primary: color ?? AppColors.light,
           padding: const EdgeInsets.all(0.0),
         ),
         child: Container(
           padding: const EdgeInsets.all(0.0),
           alignment: Alignment.center,
-          decoration: BoxDecoration(shape: BoxShape.circle),
+          decoration: const BoxDecoration(shape: BoxShape.circle),
           child: icon,
         ),
       ),

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_initializing_formals
+
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/core.dart';
@@ -6,10 +8,11 @@ import '../../../../../../models/game_model.dart';
 class PlayerEmptyWidget extends StatefulWidget {
   final int index;
   final PlayerModel? user;
-  PlayerEmptyWidget({
+  const PlayerEmptyWidget({
+    Key? key,
     required this.index,
     this.user,
-  });
+  }) : super(key: key);
 
   @override
   _PlayerEmptyWidgetState createState() => _PlayerEmptyWidgetState();
@@ -17,10 +20,11 @@ class PlayerEmptyWidget extends StatefulWidget {
 
 class _PlayerEmptyWidgetState extends State<PlayerEmptyWidget>
     with SingleTickerProviderStateMixin {
-  late final _GradientPainter painter = new _GradientPainter(
+  late final _GradientPainter painter = _GradientPainter(
     strokeWidth: 3,
     radius: 50,
-    gradient: LinearGradient(colors: [AppColors.tertiary, AppColors.tertiary]),
+    gradient:
+        const LinearGradient(colors: [AppColors.tertiary, AppColors.tertiary]),
   );
 
   late double _scale = 0.0;
@@ -32,7 +36,7 @@ class _PlayerEmptyWidgetState extends State<PlayerEmptyWidget>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(
+      duration: const Duration(
         milliseconds: 200,
       ),
       lowerBound: 0.0,
@@ -70,11 +74,11 @@ class _PlayerEmptyWidgetState extends State<PlayerEmptyWidget>
                         child: Transform.scale(
                           scale: _scale,
                           child: Container(
-                            padding: EdgeInsets.all(12),
+                            padding: const EdgeInsets.all(12),
                             decoration: BoxDecoration(
                               color: AppColors.tertiary,
-                              borderRadius: new BorderRadius.all(
-                                const Radius.circular(
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(
                                   50.0,
                                 ),
                               ),
@@ -83,8 +87,7 @@ class _PlayerEmptyWidgetState extends State<PlayerEmptyWidget>
                                   color: Colors.black.withOpacity(0.3),
                                   spreadRadius: 0,
                                   blurRadius: 2,
-                                  offset: Offset(
-                                      0, 3), // changes position of shadow
+                                  offset: const Offset(0, 3),
                                 ),
                               ],
                             ),
@@ -105,7 +108,7 @@ class _PlayerEmptyWidgetState extends State<PlayerEmptyWidget>
                         ),
                       )
                     : Text(
-                        (this.widget.index + 1).toString(),
+                        (widget.index + 1).toString(),
                         style: AppTextStyles.body,
                       ),
               ),
@@ -233,9 +236,9 @@ class _GradientPainter extends CustomPainter {
       {required double strokeWidth,
       required double radius,
       required Gradient gradient})
-      : this.strokeWidth = strokeWidth,
-        this.radius = radius,
-        this.gradient = gradient;
+      : strokeWidth = strokeWidth,
+        radius = radius,
+        gradient = gradient;
 
   @override
   void paint(Canvas canvas, Size size) {

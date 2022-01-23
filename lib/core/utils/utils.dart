@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:dixit_go/core/domain/domain.dart';
-import 'package:dixit_go/core/infrastructure/infrastructure.dart';
+import '../domain/domain.dart';
+import '../infrastructure/infrastructure.dart';
 
 export 'extensions/extensions.dart';
 

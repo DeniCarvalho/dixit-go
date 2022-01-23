@@ -8,9 +8,10 @@ import 'home.dart';
 class HomePage extends StatefulWidget {
   final OrigemEnum origem;
 
-  HomePage({
+  const HomePage({
+    Key? key,
     required this.origem,
-  });
+  }) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -21,8 +22,8 @@ class _HomePageState extends State<HomePage> {
   final _visibleTitle = ValueNotifier<bool>(true);
   final showJoinButton = ValueNotifier<bool>(false);
   final _visibleDispatch = ValueNotifier<bool>(false);
-  static final _durationShow = const Duration(milliseconds: 250);
-  static final _durationPage = const Duration(milliseconds: 850);
+  static const _durationShow = Duration(milliseconds: 250);
+  static const _durationPage = Duration(milliseconds: 850);
 
   late PageController controllerPage;
   //234.3333485921224
@@ -38,7 +39,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   initPage() async {
-    await Future.delayed(new Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 500));
     _visible.value = true;
   }
 
@@ -142,7 +143,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          Align(
+          const Align(
             alignment: Alignment.center,
             child: BirdAnimation(
               width: double.infinity,
@@ -180,7 +181,7 @@ class _HomePageState extends State<HomePage> {
         alignment: AlignmentDirectional.center,
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppColors.backgroundColor,
             ),
           ),

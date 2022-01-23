@@ -1,10 +1,10 @@
 class AppImages {
-  static String _avatar1 = "assets/images/avatar/lion.png";
-  static String _avatar2 = "assets/images/avatar/dog.png";
-  static String _avatar3 = "assets/images/avatar/cat.png";
-  static String _avatar4 = "assets/images/avatar/owl.png";
-  static String _avatar5 = "assets/images/avatar/fox.png";
-  static String _avatar6 = "assets/images/avatar/monkey.png";
+  static const String _avatar1 = "assets/images/avatar/lion.png";
+  static const String _avatar2 = "assets/images/avatar/dog.png";
+  static const String _avatar3 = "assets/images/avatar/cat.png";
+  static const String _avatar4 = "assets/images/avatar/owl.png";
+  static const String _avatar5 = "assets/images/avatar/fox.png";
+  static const String _avatar6 = "assets/images/avatar/monkey.png";
 
   static String get logo => "assets/images/logo.png";
   static String get logoDark => "assets/images/logo_dark.png";

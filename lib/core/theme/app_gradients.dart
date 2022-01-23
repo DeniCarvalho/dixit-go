@@ -4,9 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class AppGradients {
-  static final linear = LinearGradient(colors: [
-    // Color(0xFF181617).withOpacity(.94),
-    // Color(0xFF181617),
+  static const linear = LinearGradient(colors: [
     Color(0xFFF1A382),
     Color(0xFFffffff),
   ], stops: [

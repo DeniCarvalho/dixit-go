@@ -1,6 +1,7 @@
-import 'package:dixit_go/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
+
+import '../core/core.dart';
 
 class UserModel {
   late String name;
@@ -26,18 +27,18 @@ class UserModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['username'] = this.username;
-    data['email'] = this.email;
-    data['pathAvatar'] = this.pathAvatar != null ? this.pathAvatar : "";
-    data['urlAvatar'] = this.urlAvatar != null ? this.urlAvatar : "";
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['username'] = username;
+    data['email'] = email;
+    data['pathAvatar'] = pathAvatar ?? "";
+    data['urlAvatar'] = urlAvatar ?? "";
     return data;
   }
 
   String firstName() {
-    if (this.name == '') return 'Indefinido';
-    List<String> arrString = this.name.split(" ");
+    if (name == '') return 'Indefinido';
+    List<String> arrString = name.split(" ");
     return arrString.first != '' ? arrString.first : "Indefinido";
   }
 

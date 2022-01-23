@@ -8,13 +8,14 @@ class LogoComponent extends StatelessWidget {
   final bool isHero;
   final bool transitionOnUserGestures;
   final bool isDark;
-  LogoComponent({
+  const LogoComponent({
+    Key? key,
     this.height = 50,
     this.top = 0,
     this.isHero = true,
     this.transitionOnUserGestures = true,
     this.isDark = true,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

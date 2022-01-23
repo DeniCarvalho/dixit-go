@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_initializing_formals
+
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/core.dart';
@@ -6,10 +8,12 @@ import '../../../../../../models/game_model.dart';
 class PlayerFieldWidget extends StatefulWidget {
   final int index;
   final PlayerModel? user;
-  PlayerFieldWidget({
+
+  const PlayerFieldWidget({
+    Key? key,
     required this.index,
     this.user,
-  });
+  }) : super(key: key);
 
   @override
   _PlayerFieldWidgetState createState() => _PlayerFieldWidgetState();
@@ -20,7 +24,7 @@ class _PlayerFieldWidgetState extends State<PlayerFieldWidget>
   _GradientPainter painter = _GradientPainter(
     strokeWidth: 2,
     radius: 50,
-    gradient: LinearGradient(
+    gradient: const LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: [
@@ -39,7 +43,7 @@ class _PlayerFieldWidgetState extends State<PlayerFieldWidget>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(
+      duration: const Duration(
         milliseconds: 200,
       ),
       lowerBound: 0.0,
@@ -66,7 +70,7 @@ class _PlayerFieldWidgetState extends State<PlayerFieldWidget>
             painter: _GradientPainter(
               strokeWidth: 2,
               radius: 50,
-              gradient: LinearGradient(
+              gradient: const LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
@@ -94,25 +98,15 @@ class _PlayerFieldWidgetState extends State<PlayerFieldWidget>
                               child: Transform.scale(
                                 scale: _scale,
                                 child: Container(
-                                  padding: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
+                                  padding: const EdgeInsets.all(5),
+                                  decoration: const BoxDecoration(
                                     color: AppColors.light,
-                                    borderRadius: new BorderRadius.all(
-                                      const Radius.circular(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(
                                         50.0,
                                       ),
                                     ),
-                                    boxShadow: [
-                                      // BoxShadow(
-                                      //   color: AppColors.tertiary,
-                                      //   spreadRadius: -5,
-                                      //   blurRadius: 50,
-                                      //   offset: Offset(
-                                      //     0,
-                                      //     0,
-                                      //   ),
-                                      // ),
-                                    ],
+                                    boxShadow: [],
                                   ),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(50.0),
@@ -137,10 +131,10 @@ class _PlayerFieldWidgetState extends State<PlayerFieldWidget>
                             child: Container(
                               width: 18,
                               height: 18,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Colors.green,
-                                borderRadius: new BorderRadius.all(
-                                  const Radius.circular(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(
                                     50.0,
                                   ),
                                 ),
@@ -149,7 +143,7 @@ class _PlayerFieldWidgetState extends State<PlayerFieldWidget>
                           ),
                         ],
                       )
-                    : Icon(
+                    : const Icon(
                         Icons.person_rounded,
                         color: AppColors.primary,
                       ),
@@ -282,9 +276,9 @@ class _GradientPainter extends CustomPainter {
       {required double strokeWidth,
       required double radius,
       required Gradient gradient})
-      : this.strokeWidth = strokeWidth,
-        this.radius = radius,
-        this.gradient = gradient;
+      : strokeWidth = strokeWidth,
+        radius = radius,
+        gradient = gradient;
 
   @override
   void paint(Canvas canvas, Size size) {

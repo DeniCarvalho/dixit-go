@@ -6,6 +6,8 @@ import '../../game_routes.dart';
 import 'widgets/widget.dart';
 
 class JoinPage extends StatefulWidget {
+  const JoinPage({Key? key}) : super(key: key);
+
   @override
   _JoinPageState createState() => _JoinPageState();
 }
@@ -13,7 +15,7 @@ class JoinPage extends StatefulWidget {
 class _JoinPageState extends State<JoinPage> {
   var globalKey = RectGetter.createGlobalKey();
   Rect rect = const Offset(0.0, 0.0) & const Size(0.0, 0.0);
-  final Duration animationDurationPage = Duration(milliseconds: 300);
+  final Duration animationDurationPage = const Duration(milliseconds: 300);
 
   @override
   void initState() {
@@ -26,7 +28,7 @@ class _JoinPageState extends State<JoinPage> {
       //<-- Wrap Scaffold with a Stack
       children: <Widget>[
         Scaffold(
-          body: new Stack(
+          body: Stack(
             fit: StackFit.expand,
             children: <Widget>[
               Container(
@@ -41,11 +43,11 @@ class _JoinPageState extends State<JoinPage> {
               ),
               AnimatedOpacity(
                 opacity: 1.0,
-                duration: Duration(milliseconds: 500),
-                child: new Column(
+                duration: const Duration(milliseconds: 500),
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: const [
                     TitleWidget(),
                   ],
                 ),
@@ -62,12 +64,12 @@ class _JoinPageState extends State<JoinPage> {
     setState(() {
       rect = RectGetter.getRectFromKey(globalKey)!;
     });
-    await Future.delayed(new Duration(milliseconds: 800));
+    await Future.delayed(const Duration(milliseconds: 800));
     WidgetsBinding.instance!.addPostFrameCallback((_) {
       setState(() =>
           rect = rect.inflate(1.3 * MediaQuery.of(context).size.longestSide));
       Future.delayed(
-        animationDurationPage + Duration(milliseconds: 100),
+        animationDurationPage + const Duration(milliseconds: 100),
         () {
           Nav.pushNamed(GameRoutes.pre.asGameChild);
         },

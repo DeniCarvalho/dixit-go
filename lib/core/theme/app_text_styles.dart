@@ -1,7 +1,7 @@
-import 'package:dixit_go/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../core.dart';
 import '../utils/extensions/responsive_extension.dart';
 
 class AppTextStyles {

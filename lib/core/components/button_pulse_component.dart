@@ -1,5 +1,6 @@
-import 'package:dixit_go/core/core.dart';
 import 'package:flutter/material.dart';
+
+import '../core.dart';
 
 class ButtonPulseComponent extends StatefulWidget {
   const ButtonPulseComponent({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class _ButtonPulseComponentState extends State<ButtonPulseComponent>
   @override
   void initState() {
     _animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 2));
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
     _animation = Tween(begin: 0.0, end: 8.0).animate(
         CurvedAnimation(parent: _animationController, curve: Curves.easeOut));
     _animationController.repeat(reverse: true);
@@ -36,7 +37,7 @@ class _ButtonPulseComponentState extends State<ButtonPulseComponent>
         // Navigator.of(context).pop();
       },
       style: ElevatedButton.styleFrom(
-        shape: CircleBorder(),
+        shape: const CircleBorder(),
         primary: Colors.white,
         padding: const EdgeInsets.all(0.0),
       ),

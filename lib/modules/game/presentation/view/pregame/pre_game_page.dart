@@ -6,13 +6,15 @@ import '../../../../../core/core.dart';
 import 'widgets/center_widget.dart';
 
 class PreGamePage extends StatefulWidget {
+  const PreGamePage({Key? key}) : super(key: key);
+
   @override
   _PreGamePageState createState() => _PreGamePageState();
 }
 
 class _PreGamePageState extends State<PreGamePage> {
   bool _visible = false;
-  ColorModel colorCard = new ColorModel(
+  ColorModel colorCard = ColorModel(
     name: "PADRÃO",
     color: AppColors.contrastPrimary,
     colorText: Colors.white,
@@ -26,7 +28,7 @@ class _PreGamePageState extends State<PreGamePage> {
   }
 
   load() async {
-    await Future.delayed(new Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
     setState(() {
       _visible = true;
     });
@@ -41,7 +43,7 @@ class _PreGamePageState extends State<PreGamePage> {
       'cardColor5',
       'cardColor6',
     ];
-    final _random = new Random();
+    final _random = Random();
     String color = list[_random.nextInt(list.length)];
     setState(() {
       colorCard = AppColors().getColor(color);
@@ -51,17 +53,17 @@ class _PreGamePageState extends State<PreGamePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: new Stack(
+      body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
           AnimatedContainer(
             color: colorCard.color,
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
           ),
           AnimatedOpacity(
             opacity: _visible ? 1.0 : 0.0,
-            duration: Duration(milliseconds: 500),
-            child: new Column(
+            duration: const Duration(milliseconds: 500),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

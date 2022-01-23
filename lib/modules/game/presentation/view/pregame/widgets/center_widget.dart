@@ -8,11 +8,12 @@ class CenterWidget extends StatefulWidget {
   final Function() showColor;
   final String colorName;
   final Color colorText;
-  CenterWidget({
+  const CenterWidget({
+    Key? key,
     required this.showColor,
     required this.colorName,
     required this.colorText,
-  });
+  }) : super(key: key);
   @override
   _CenterWidgetState createState() => _CenterWidgetState();
 }
@@ -28,7 +29,7 @@ class _CenterWidgetState extends State<CenterWidget> {
   }
 
   load() async {
-    await Future.delayed(new Duration(milliseconds: 800));
+    await Future.delayed(const Duration(milliseconds: 800));
     setState(() {
       startFirst = true;
     });
@@ -70,7 +71,7 @@ class _CenterWidgetState extends State<CenterWidget> {
                 repeatForever: false,
                 animatedTexts: [
                   FadeAnimatedText(
-                    '${widget.colorName}',
+                    widget.colorName,
                     textStyle: GoogleFonts.notoSans(
                       color: widget.colorText,
                       fontSize: 40.fontSize,

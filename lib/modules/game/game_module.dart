@@ -16,12 +16,12 @@ class GameModule extends Module {
   final List<ModularRoute> routes = [
     ChildRoute(
       GameRoutes.join,
-      child: (_, __) => JoinPage(),
+      child: (_, __) => const JoinPage(),
       transition: TransitionType.fadeIn,
     ),
     ChildRoute(
       GameRoutes.pre,
-      child: (_, __) => PreGamePage(),
+      child: (_, __) => const PreGamePage(),
       transition: TransitionType.fadeIn,
     ),
   ];

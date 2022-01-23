@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:dixit_go/core/core.dart';
+import '../core.dart';
 
 ///
 /// Owls animation

@@ -1,4 +1,4 @@
-import 'package:dixit_go/models/user_model.dart';
+import 'user_model.dart';
 
 class GameModel {
   String? roomId;
@@ -16,17 +16,17 @@ class GameModel {
     if (json['players'] != null) {
       players = [];
       json['players'].forEach((v) {
-        if (!(v is String)) {
-          players.add(new PlayerModel.fromJson(v));
+        if (v is! String) {
+          players.add(PlayerModel.fromJson(v));
         }
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['roomId'] = this.roomId != null ? this.roomId : "";
-    data['players'] = this.players.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['roomId'] = roomId ?? "";
+    data['players'] = players.map((v) => v.toJson()).toList();
     return data;
   }
 }

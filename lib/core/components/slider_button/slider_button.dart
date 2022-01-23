@@ -1,7 +1,8 @@
-import 'package:dixit_go/core/utils/extensions/responsive_extension.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
+import 'package:shimmer/shimmer.dart';
+
+import '../../utils/extensions/responsive_extension.dart';
 
 class SliderButton extends StatefulWidget {
   ///To make button more customizable add your child widget
@@ -49,7 +50,8 @@ class SliderButton extends StatefulWidget {
   final FeedbackType type;
   final List<BoxShadow>? boxShadowContainer;
 
-  SliderButton({
+  const SliderButton({
+    Key? key,
     required this.action,
     this.radius = 100,
     this.boxShadow,
@@ -72,7 +74,8 @@ class SliderButton extends StatefulWidget {
     this.disable = false,
     this.type = FeedbackType.success,
     this.boxShadowContainer,
-  }) : assert((buttonSize ?? 60) <= (height));
+  })  : assert((buttonSize ?? 60) <= (height)),
+        super(key: key);
 
   @override
   _SliderButtonState createState() => _SliderButtonState();
@@ -114,7 +117,7 @@ class _SliderButtonState extends State<SliderButton> {
                   ? Shimmer.fromColors(
                       baseColor: widget.baseColor,
                       highlightColor: widget.highlightedColor,
-                      child: widget.label ?? Text(''),
+                      child: widget.label ?? const Text(''),
                     )
                   : widget.label,
             ),
@@ -147,7 +150,7 @@ class _SliderButtonState extends State<SliderButton> {
                         ),
                   )
                 : Dismissible(
-                    key: Key("cancel"),
+                    key: const Key("cancel"),
                     direction: DismissDirection.startToEnd,
                     confirmDismiss: (value) async {
                       try {
@@ -157,6 +160,7 @@ class _SliderButtonState extends State<SliderButton> {
                           Vibrate.vibrate();
                         }
                       } catch (e) {
+                        // ignore: avoid_print
                         print(e);
                       }
                     },

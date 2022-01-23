@@ -5,20 +5,21 @@ import '../core.dart';
 class AvatarComponent extends StatelessWidget {
   final double height;
   final EdgeInsetsGeometry? padding;
-  AvatarComponent({
+  const AvatarComponent({
+    Key? key,
     this.height = 40,
     this.padding,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     ImageProvider logo = AssetImage(AppImages.avatar6);
     return Container(
-      padding: padding != null ? padding : EdgeInsets.all(8.responsiveHeight),
+      padding: padding ?? EdgeInsets.all(8.responsiveHeight),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: new BorderRadius.all(
-          const Radius.circular(
+        borderRadius: const BorderRadius.all(
+          Radius.circular(
             10.0,
           ),
         ),
@@ -27,7 +28,7 @@ class AvatarComponent extends StatelessWidget {
             color: Colors.black.withOpacity(0.3),
             spreadRadius: 0,
             blurRadius: 2,
-            offset: Offset(0, 3), // changes position of shadow
+            offset: const Offset(0, 3), // changes position of shadow
           ),
         ],
       ),

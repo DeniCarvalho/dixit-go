@@ -1,10 +1,10 @@
-import 'package:dixit_go/core/core.dart';
-import 'package:dixit_go/internationalization/i18n_extension.dart';
-import 'package:dixit_go/models/game_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:rect_getter/rect_getter.dart';
 
+import '../../../../../core/core.dart';
+import '../../../../../internationalization/i18n_extension.dart';
+import '../../../../../models/game_model.dart';
 import 'widgets/widgets.dart';
 
 class InvitePlayerView extends StatefulWidget {
@@ -24,14 +24,14 @@ class InvitePlayerView extends StatefulWidget {
 }
 
 class _InvitePlayerViewState extends State<InvitePlayerView> {
-  GameModel gameModel = new GameModel(
+  GameModel gameModel = GameModel(
     players: [],
-    config: new GameConfigModel(),
+    config: GameConfigModel(),
   );
 
   var globalKey = RectGetter.createGlobalKey();
   late Rect rect;
-  final Duration animationDurationPage = Duration(milliseconds: 300);
+  final Duration animationDurationPage = const Duration(milliseconds: 300);
 
   late bool isOk;
 
@@ -45,7 +45,7 @@ class _InvitePlayerViewState extends State<InvitePlayerView> {
   }
 
   loadData() async {
-    PlayerModel player = new PlayerModel(
+    PlayerModel player = PlayerModel(
       sorted: 1,
     );
     player.name = "Denisson Carvalho";
@@ -54,7 +54,7 @@ class _InvitePlayerViewState extends State<InvitePlayerView> {
     player.urlAvatar = "https://avatars.githubusercontent.com/u/965305?v=4";
     gameModel.players.add(player);
 
-    PlayerModel player2 = new PlayerModel(
+    PlayerModel player2 = PlayerModel(
       sorted: 2,
     );
     player2.name = "Gabrielle Santos";
@@ -63,7 +63,7 @@ class _InvitePlayerViewState extends State<InvitePlayerView> {
     player2.pathAvatar = "avatar6";
     gameModel.players.add(player2);
 
-    PlayerModel player3 = new PlayerModel(
+    PlayerModel player3 = PlayerModel(
       sorted: 3,
     );
     player3.name = "Elias Carvalho";
@@ -72,7 +72,7 @@ class _InvitePlayerViewState extends State<InvitePlayerView> {
     player3.pathAvatar = "avatar2";
     gameModel.players.add(player3);
 
-    PlayerModel player4 = new PlayerModel(
+    PlayerModel player4 = PlayerModel(
       sorted: 4,
     );
     player4.name = "Suelly Bispo";
@@ -91,7 +91,7 @@ class _InvitePlayerViewState extends State<InvitePlayerView> {
     }
     for (var i = 0; i < (12 - gameModel.players.length); i++) {
       _list.add(
-        new PlayerModel(sorted: 0),
+        PlayerModel(sorted: 0),
       );
     }
     return _list;
@@ -103,7 +103,7 @@ class _InvitePlayerViewState extends State<InvitePlayerView> {
       alignment: AlignmentDirectional.center,
       children: [
         Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: AppColors.light,
           ),
         ),
@@ -126,7 +126,7 @@ class _InvitePlayerViewState extends State<InvitePlayerView> {
                   clipper: WaveClipperOne(
                     flip: true,
                   ),
-                  shadow: Shadow(blurRadius: 5),
+                  shadow: const Shadow(blurRadius: 5),
                   child: Container(
                     height: 150.responsiveWidth,
                     color: AppColors.backgroundColor,
@@ -176,7 +176,8 @@ class _InvitePlayerViewState extends State<InvitePlayerView> {
                                   ),
                                   GridView.count(
                                     crossAxisCount: 3,
-                                    physics: NeverScrollableScrollPhysics(),
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
                                     childAspectRatio: 3 / 3,
                                     shrinkWrap: true,
                                     children: List.generate(
@@ -278,6 +279,7 @@ class _InvitePlayerViewState extends State<InvitePlayerView> {
                 color: AppColors.light,
               ),
               padding: EdgeInsets.all(10.0.responsiveWidth),
+              action: () {},
             ),
             SizedBox(
               width: 8.responsiveWidth,
@@ -289,16 +291,18 @@ class _InvitePlayerViewState extends State<InvitePlayerView> {
                 color: AppColors.light,
               ),
               padding: EdgeInsets.all(10.0.responsiveWidth),
+              action: () {},
             ),
             SizedBox(
               width: 8.responsiveWidth,
             ),
             buttonOption(
               icon: Icon(
-                Icons.share_location_rounded,
+                Icons.add_reaction_outlined,
                 size: 31.fontSize,
                 color: AppColors.light,
               ),
+              action: openComingSoon,
             ),
           ],
         ),
@@ -307,15 +311,19 @@ class _InvitePlayerViewState extends State<InvitePlayerView> {
   Widget buttonOption({
     required Widget icon,
     EdgeInsetsGeometry? padding,
+    required VoidCallback action,
   }) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.contrastPrimary,
-        borderRadius: BorderRadius.circular(25),
-      ),
-      child: Padding(
-        padding: padding ?? EdgeInsets.all(6.0.responsiveWidth),
-        child: icon,
+    return InkWell(
+      onTap: action,
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.contrastPrimary,
+          borderRadius: BorderRadius.circular(25),
+        ),
+        child: Padding(
+          padding: padding ?? EdgeInsets.all(6.0.responsiveWidth),
+          child: icon,
+        ),
       ),
     );
   }
@@ -335,12 +343,12 @@ class _InvitePlayerViewState extends State<InvitePlayerView> {
           height: 60.responsiveHeight,
           width: MediaQuery.of(context).size.width * 0.5.responsiveWidth,
           dismissThresholds: 0.70,
-          boxShadow: BoxShadow(
+          boxShadow: const BoxShadow(
             color: Colors.white,
             spreadRadius: -10,
             blurRadius: 200,
           ),
-          boxShadowContainer: [
+          boxShadowContainer: const [
             BoxShadow(
               color: Colors.black,
               spreadRadius: 0,
@@ -357,9 +365,9 @@ class _InvitePlayerViewState extends State<InvitePlayerView> {
               setState(() => rect =
                   rect.inflate(1.3 * MediaQuery.of(context).size.longestSide));
               Future.delayed(
-                animationDurationPage + Duration(milliseconds: 100),
+                animationDurationPage + const Duration(milliseconds: 100),
                 () async {
-                  await Future.delayed(new Duration(seconds: 1));
+                  await Future.delayed(const Duration(seconds: 1));
                   Nav.navigate('/game/join');
                 },
               );
@@ -417,6 +425,43 @@ class _InvitePlayerViewState extends State<InvitePlayerView> {
           ),
         ),
       ],
+    );
+  }
+
+  openComingSoon() {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: false,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(10),
+        ),
+      ),
+      builder: (BuildContext context) {
+        return Container(
+          key: const Key('ModalOrientation'),
+          padding: const EdgeInsets.all(40),
+          decoration: const BoxDecoration(
+            color: AppColors.contrastSecundary,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10.0),
+              topRight: Radius.circular(10.0),
+            ),
+          ),
+          child: ListView(
+            children: <Widget>[
+              Text(
+                "Em breve",
+                style: TextStyle(
+                  color: AppColors.contrastPrimary,
+                  fontSize: 20.fontSize,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

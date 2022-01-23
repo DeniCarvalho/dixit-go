@@ -1,5 +1,6 @@
-import 'package:dixit_go/internationalization/appLocalizations.dart';
 import 'package:flutter/material.dart';
+
+import 'app_localizations.dart';
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   // This delegate instance will never change (it doesn't even have fields!)
@@ -15,7 +16,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   @override
   Future<AppLocalizations> load(Locale locale) async {
     // AppLocalizations class is where the JSON loading actually runs
-    AppLocalizations localizations = new AppLocalizations(locale: locale);
+    AppLocalizations localizations = AppLocalizations(locale: locale);
     await localizations.load();
     return localizations;
   }

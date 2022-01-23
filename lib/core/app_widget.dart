@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../internationalization/appLocalizations.dart';
+import '../internationalization/app_localizations.dart';
 import 'core.dart';
 
 class AppWidget extends StatefulWidget {
@@ -36,7 +36,7 @@ class _AppWidgetState extends State<AppWidget> {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
+      const SystemUiOverlayStyle(
         systemNavigationBarColor: Colors.black,
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.light,
@@ -48,7 +48,7 @@ class _AppWidgetState extends State<AppWidget> {
         FocusScopeNode currentFocus = FocusScope.of(context);
 
         if (!currentFocus.hasPrimaryFocus) {
-          currentFocus.requestFocus(new FocusNode());
+          currentFocus.requestFocus(FocusNode());
         }
       },
       child: MaterialApp(
@@ -61,11 +61,11 @@ class _AppWidgetState extends State<AppWidget> {
           primaryColor: AppColors.primary,
           canvasColor: AppColors.primary,
         ),
-        supportedLocales: [
+        supportedLocales: const [
           Locale('en', 'US'),
           Locale('pt', 'BR'),
         ],
-        localizationsDelegates: [
+        localizationsDelegates: const [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,

@@ -16,7 +16,7 @@ class AuthModule extends Module {
   final List<ModularRoute> routes = [
     ChildRoute(
       AuthRoutes.login,
-      child: (_, __) => LoginPage(),
+      child: (_, __) => const LoginPage(),
       transition: TransitionType.fadeIn,
     ),
   ];

@@ -1,17 +1,26 @@
-import 'package:dixit_go/modules/auth/presentation/auth_routes.dart';
-import 'package:dixit_go/modules/game/presentation/game_routes.dart';
-import 'package:dixit_go/modules/home/presentation/home_routes.dart';
-import 'package:dixit_go/modules/splash/presentation/view/view.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../modules/auth/presentation/auth_routes.dart';
+import '../modules/game/presentation/game_routes.dart';
+import '../modules/home/presentation/home_routes.dart';
 import '../modules/modules.dart';
+import '../modules/splash/data/data.dart';
+import '../modules/splash/domain/repositories/repositories.dart';
+import '../modules/splash/presentation/view/view.dart';
 
 ///
 /// Base app module definition
 ///
 class AppModule extends Module {
   @override
-  final List<Bind> binds = [];
+  final List<Bind> binds = [
+    Bind.lazySingleton<ISplashApiDatasource>(
+      (di) => SplashApiDatasource(),
+    ),
+    Bind.lazySingleton<IAuthRepository>(
+      (di) => AuthRepository(di.get<ISplashApiDatasource>()),
+    ),
+  ];
 
   @override
   final List<ModularRoute> routes = [

@@ -1,6 +1,8 @@
 import 'dart:io';
-import 'package:dixit_go/core/app_main.dart';
+
 import 'package:flutter/material.dart';
+
+import 'core/app_main.dart';
 
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
 // import 'package:intl/date_symbol_data_local.dart';
@@ -21,7 +23,7 @@ class MyHttpOverrides extends HttpOverrides {
 
 void main() async {
   // Run app!
-  HttpOverrides.global = new MyHttpOverrides();
+  HttpOverrides.global = MyHttpOverrides();
   Paint.enableDithering = true;
   // initializeDateFormatting('pt_BR', null);
   // Intl.defaultLocale = 'pt_BR';

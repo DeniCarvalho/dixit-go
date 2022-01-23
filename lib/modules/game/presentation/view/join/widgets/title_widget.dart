@@ -5,6 +5,8 @@ import '../../../../../../core/core.dart';
 import '../../../../../../internationalization/internationalization.dart';
 
 class TitleWidget extends StatelessWidget {
+  const TitleWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,14 +27,14 @@ class TitleWidget extends StatelessWidget {
                   Nav.navigate('/home');
                 },
                 style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(),
+                  shape: const CircleBorder(),
                   primary: Colors.white,
                   padding: const EdgeInsets.all(0.0),
                 ),
                 child: Container(
                   padding: const EdgeInsets.all(0.0),
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(shape: BoxShape.circle),
+                  decoration: const BoxDecoration(shape: BoxShape.circle),
                   child: Icon(
                     Icons.chevron_left,
                     color: AppColors.primary,
@@ -66,7 +68,7 @@ class TitleWidget extends StatelessWidget {
             SizedBox(
               width: 40.responsiveWidth,
               height: 40.responsiveHeight,
-              child: ButtonPulseComponent(),
+              child: const ButtonPulseComponent(),
             ),
           ],
         ),

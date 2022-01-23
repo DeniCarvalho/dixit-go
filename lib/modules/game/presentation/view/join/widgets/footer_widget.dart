@@ -1,17 +1,19 @@
-import 'package:dixit_go/core/core.dart';
-import 'package:dixit_go/internationalization/i18n_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:rect_getter/rect_getter.dart';
+
+import '../../../../../../core/core.dart';
+import '../../../../../../internationalization/i18n_extension.dart';
 
 class FooterWidget extends StatelessWidget {
   final Function() next;
   final bool loading;
   final dynamic rectGetterKey;
-  FooterWidget({
+  const FooterWidget({
+    Key? key,
     required this.next,
     required this.rectGetterKey,
     this.loading = false,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,15 +48,13 @@ class FooterWidget extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                       ),
                     )
-                  : Container(
+                  : SizedBox(
                       height: 20.0.responsiveHeight,
                       width: 20.0.responsiveWidth,
-                      child: CircularProgressIndicator(
+                      child: const CircularProgressIndicator(
                         backgroundColor: AppColors.contrastPrimary,
                         strokeWidth: 1.5,
-                        valueColor: new AlwaysStoppedAnimation<Color>(
-                          Colors.white,
-                        ),
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                       ),
                     ),
               RectGetter(

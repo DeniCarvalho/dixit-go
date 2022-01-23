@@ -5,9 +5,10 @@ import 'player_empty_widget.dart';
 
 class PlayerList extends StatefulWidget {
   final List<PlayerModel> players;
-  PlayerList({
+  const PlayerList({
+    Key? key,
     required this.players,
-  });
+  }) : super(key: key);
   @override
   _PlayerListState createState() => _PlayerListState();
 }
@@ -22,7 +23,7 @@ class _PlayerListState extends State<PlayerList> {
     }
     for (var i = 0; i < (6 - widget.players.length); i++) {
       _list.add(
-        new PlayerModel(sorted: 0),
+        PlayerModel(sorted: 0),
       );
     }
     return _list;
@@ -39,7 +40,7 @@ class _PlayerListState extends State<PlayerList> {
     return Expanded(
       child: GridView.count(
         crossAxisCount: 2,
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         childAspectRatio: (itemWidth / itemHeight),
         children: List.generate(mountedList().length, (index) {
           return Center(

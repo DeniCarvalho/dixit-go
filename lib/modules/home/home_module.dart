@@ -16,7 +16,7 @@ class HomeModule extends Module {
   final List<ModularRoute> routes = [
     ChildRoute(
       HomeRoutes.home,
-      child: (_, __) => HomePage(origem: OrigemEnum.splash),
+      child: (_, __) => const HomePage(origem: OrigemEnum.splash),
       transition: TransitionType.fadeIn,
     ),
   ];

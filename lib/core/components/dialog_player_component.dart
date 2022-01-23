@@ -1,7 +1,9 @@
 import 'dart:ui';
-import 'package:dixit_go/core/core.dart';
-import 'package:dixit_go/models/game_model.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../models/game_model.dart';
+import '../core.dart';
 
 class DialogPlayerComponent extends StatefulWidget {
   final String title, text;
@@ -50,7 +52,7 @@ class _CustomDialogBoxState extends State<DialogPlayerComponent> {
             shape: BoxShape.rectangle,
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: AppColors.secundary,
                 offset: Offset(0, 0),
@@ -83,14 +85,14 @@ class _CustomDialogBoxState extends State<DialogPlayerComponent> {
                       Nav.pop();
                     },
                     style: ElevatedButton.styleFrom(
-                      shape: CircleBorder(),
+                      shape: const CircleBorder(),
                       primary: AppColors.danger,
                       padding: const EdgeInsets.all(10.0),
                     ),
                     child: Container(
                       alignment: Alignment.center,
-                      decoration: BoxDecoration(shape: BoxShape.circle),
-                      child: Icon(
+                      decoration: const BoxDecoration(shape: BoxShape.circle),
+                      child: const Icon(
                         Icons.delete,
                         color: Colors.white,
                       ),
@@ -106,10 +108,10 @@ class _CustomDialogBoxState extends State<DialogPlayerComponent> {
                     ),
                     child: Container(
                       alignment: Alignment.center,
-                      decoration: BoxDecoration(shape: BoxShape.circle),
+                      decoration: const BoxDecoration(shape: BoxShape.circle),
                       child: Text(
                         widget.text,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: AppColors.primary,
                           fontWeight: FontWeight.bold,
                         ),
@@ -170,11 +172,11 @@ class _CustomDialogBoxState extends State<DialogPlayerComponent> {
             backgroundColor: Colors.white,
             radius: 45,
             child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(45)),
+              borderRadius: const BorderRadius.all(Radius.circular(45)),
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(45)),
+                  borderRadius: const BorderRadius.all(Radius.circular(45)),
                   child: Image(
                     image: widget.user?.getAvatar() ??
                         AssetImage(
