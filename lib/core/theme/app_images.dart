@@ -9,6 +9,8 @@ class AppImages {
   static String get logo => "assets/images/logo.png";
   static String get logoDark => "assets/images/logo_dark.png";
   static String get background => "assets/images/background.png";
+  static String get google => "assets/images/google.svg";
+  static String get facebook => "assets/images/facebook.svg";
   static String get avatar1 => _avatar1;
   static String get avatar2 => _avatar2;
   static String get avatar3 => _avatar3;

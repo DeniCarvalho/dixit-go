@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../utils/extensions/responsive_extension.dart';
+import '../../../utils/extensions/responsive_extension.dart';
 
 class SliderButton extends StatefulWidget {
   ///To make button more customizable add your child widget
@@ -167,27 +167,6 @@ class _SliderButtonState extends State<SliderButton> {
                     dismissThresholds: {
                       DismissDirection.startToEnd: widget.dismissThresholds
                     },
-
-                    ///gives direction of swiping in argument.
-                    // onDismissed: (dir) async {
-                    //   setState(() {
-                    //     if (widget.dismissible) {
-                    //       flag = false;
-                    //     } else {
-                    //       flag = !flag;
-                    //     }
-                    //   });
-
-                    //   widget.action();
-                    //   try {
-                    //     bool hasVibrator = await Vibrate.canVibrate;
-                    //     if (widget.vibrationFlag && hasVibrator) {
-                    //       Vibrate.vibrate();
-                    //     }
-                    //   } catch (e) {
-                    //     print(e);
-                    //   }
-                    // },
                     child: Container(
                       width: widget.width - widget.height,
                       height: widget.height,

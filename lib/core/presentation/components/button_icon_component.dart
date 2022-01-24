@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../core.dart';
+import '../../core.dart';
+import '../../utils/extensions/responsive_extension.dart';
 
 class ButtonIconComponent extends StatelessWidget {
   final Widget icon;

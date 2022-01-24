@@ -5,8 +5,8 @@ import '../modules/game/presentation/game_routes.dart';
 import '../modules/home/presentation/home_routes.dart';
 import '../modules/modules.dart';
 import '../modules/splash/data/data.dart';
-import '../modules/splash/domain/repositories/repositories.dart';
-import '../modules/splash/presentation/view/view.dart';
+import '../modules/splash/domain/domain.dart';
+import '../modules/splash/presentation/presentation.dart';
 
 ///
 /// Base app module definition
@@ -19,6 +19,14 @@ class AppModule extends Module {
     ),
     Bind.lazySingleton<IAuthRepository>(
       (di) => AuthRepository(di.get<ISplashApiDatasource>()),
+    ),
+    Bind.lazySingleton<CheckAuth>(
+      (di) => CheckAuth(di.get<IAuthRepository>()),
+    ),
+    Bind.lazySingleton<SplashViewModel>(
+      (di) => SplashViewModel(
+        checkAuth: di.get<CheckAuth>(),
+      ),
     ),
   ];
 

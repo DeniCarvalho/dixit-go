@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../core.dart';
+import '../../core.dart';
 
 class ButtonPulseComponent extends StatefulWidget {
   const ButtonPulseComponent({Key? key}) : super(key: key);

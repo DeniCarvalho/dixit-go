@@ -10,13 +10,15 @@ abstract class ISplashApiDatasource {
 
 /// The default implementation of [ISplashApiDatasource]
 class SplashApiDatasource implements ISplashApiDatasource {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  late FirebaseAuth _auth;
 
   /// The path root
   static const root = '/';
 
   /// Creates a [SplashApiDatasource]
-  SplashApiDatasource();
+  SplashApiDatasource() {
+    _auth = FirebaseAuth.instance;
+  }
 
   @override
   Future<User?> authCheck() async {

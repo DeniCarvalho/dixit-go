@@ -11,3 +11,4 @@ export 'owls_animation.dart';
 export 'plants_animation.dart';
 export 'ripple_component.dart';
 export 'slider_button/slider.dart';
+export 'text_field_component.dart';

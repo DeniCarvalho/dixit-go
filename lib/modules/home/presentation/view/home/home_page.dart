@@ -210,7 +210,7 @@ class _HomePageState extends State<HomePage> {
                             _visible.value = true;
                           });
                         },
-                      )
+                      ),
                     ],
                   ),
                 );

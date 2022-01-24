@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../core.dart';
+import '../../core.dart';
 
 class ButtonDefaultComponent extends StatelessWidget {
-  final String text;
+  final String? text;
+  final Widget? child;
   final Color? color;
   final Color? backgroundColor;
   final double fontSize;
@@ -14,7 +15,8 @@ class ButtonDefaultComponent extends StatelessWidget {
   final double elevation;
   const ButtonDefaultComponent({
     Key? key,
-    required this.text,
+    this.text,
+    this.child,
     this.color,
     this.backgroundColor,
     this.fontSize = 15,
@@ -22,7 +24,9 @@ class ButtonDefaultComponent extends StatelessWidget {
     this.widthFactor = 0.8,
     this.shadowColor,
     this.elevation = 0.0,
-  }) : super(key: key);
+  })  : assert(
+            text != null || child != null, 'Required text or child parameters'),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +44,14 @@ class ButtonDefaultComponent extends StatelessWidget {
           ],
         ),
         child: TextButton(
-          child: Text(
-            text,
-            style: GoogleFonts.breeSerif(
-              color: color ?? AppColors.light,
-            ),
-          ),
+          child: text != null
+              ? Text(
+                  text!,
+                  style: GoogleFonts.breeSerif(
+                    color: color ?? AppColors.light,
+                  ),
+                )
+              : child!,
           style: ButtonStyle(
             overlayColor: MaterialStateProperty.all(
               (backgroundColor ?? Colors.transparent),

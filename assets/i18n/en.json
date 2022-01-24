@@ -1,5 +1,11 @@
 {
     "hello": "Hi",
+    "email": "E-email",
+    "password": "Password",
+    "signIn": "Sign in",
+    "required": "Required field",
+    "invalidEmail": "Invalid email",
+    "forgotYourPassword": "Forgot your password?",
     "description": "Aqui uma simples imagem vale\nmais do que mil palavras!",
     "wantDo": "What do you want to do?",
     "go": "Go",

@@ -48,6 +48,7 @@ dependencies:
   flutter_custom_clippers: ^2.0.0
   firebase_core: ^1.11.0
   firebase_auth: ^3.3.5
+  flutter_facebook_auth: ^4.0.1
 
 dev_dependencies:
   flutter_test:

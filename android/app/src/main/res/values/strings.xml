@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dixit Go!</string>
+    <string name="facebook_app_id">3015009858813603</string>
+    <string name="fb_login_protocol_scheme">fb3015009858813603</string>
+    <string name="facebook_client_token">77a1c1d53981eebb607fd321f5405524</string>
+</resources>
