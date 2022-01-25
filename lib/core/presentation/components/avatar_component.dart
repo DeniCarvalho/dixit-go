@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 import '../../core.dart';
 
 class AvatarComponent extends StatelessWidget {
+  final String? url;
   final double height;
   final EdgeInsetsGeometry? padding;
   const AvatarComponent({
     Key? key,
+    this.url,
     this.height = 40,
     this.padding,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    ImageProvider logo = AssetImage(AppImages.avatar6);
     return Container(
       padding: padding ?? EdgeInsets.all(8.responsiveHeight),
       decoration: BoxDecoration(
@@ -35,11 +37,25 @@ class AvatarComponent extends StatelessWidget {
       child: Hero(
         tag: "avatar",
         transitionOnUserGestures: true,
-        child: Image(
-          image: logo,
-          height: height.responsiveHeight,
-        ),
+        child: _image,
       ),
     );
   }
+
+  Widget get _image => ClipRRect(
+        borderRadius: BorderRadius.circular(10.0),
+        child: url != null && url!.isNotEmpty
+            ? FadeInImage.memoryNetwork(
+                placeholder: kTransparentImage,
+                image: url!,
+                fit: BoxFit.cover,
+                height: height.responsiveHeight,
+                width: height.responsiveWidth,
+              )
+            : Image(
+                image: AssetImage(AppImages.avatar6),
+                height: height.responsiveHeight,
+                width: height.responsiveWidth,
+              ),
+      );
 }

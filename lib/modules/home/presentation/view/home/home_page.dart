@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends ViewState<HomePage, HomeViewModel> {
   final _visible = ValueNotifier<bool>(false);
   final _visibleTitle = ValueNotifier<bool>(true);
   final showJoinButton = ValueNotifier<bool>(false);
@@ -30,6 +30,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    viewModel.fetch();
     controllerPage = PageController(
       keepPage: true,
       initialPage: 0,
@@ -101,6 +102,19 @@ class _HomePageState extends State<HomePage> {
                   : Container();
             },
           ),
+          ValueListenableBuilder(
+            valueListenable: _visibleTitle,
+            builder: (_, dynamic _visibleTitleValue, child) {
+              return _visibleTitleValue
+                  ? Positioned(
+                      top: 200,
+                      left: 0,
+                      right: 0,
+                      child: subTitleWelcome,
+                    )
+                  : Container();
+            },
+          ),
         ],
       ),
     );
@@ -110,17 +124,46 @@ class _HomePageState extends State<HomePage> {
         width: double.infinity,
         padding: EdgeInsets.symmetric(
           vertical: 50.responsiveHeight,
-          horizontal: 15.responsiveWidth,
+          horizontal: 30.responsiveWidth,
         ),
         color: Colors.transparent,
-        child: Column(
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            LogoComponent(
-              height: 50.responsiveWidth,
-              isHero: true,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                LogoComponent(
+                  height: 40.responsiveWidth,
+                  isHero: true,
+                ),
+              ],
             ),
+            ViewModelBuilder<HomeViewModel, HomeState>(
+              viewModel: viewModel,
+              builder: (context, state) {
+                return state.user != null
+                    ? AvatarComponent(
+                        url: state.user!.avatar,
+                        padding: EdgeInsets.all(4.responsiveWidth),
+                        height: 45,
+                      )
+                    : Container();
+              },
+            ),
+          ],
+        ),
+      );
+
+  Widget get subTitleWelcome => Container(
+        width: double.infinity,
+        color: Colors.transparent,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
             Text(
               'description'.i18n(context),
               style: AppTextStyles.subTitle,

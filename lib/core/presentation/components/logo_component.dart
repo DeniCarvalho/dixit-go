@@ -12,7 +12,7 @@ class LogoComponent extends StatelessWidget {
     Key? key,
     this.height = 50,
     this.top = 0,
-    this.isHero = true,
+    this.isHero = false,
     this.transitionOnUserGestures = true,
     this.isDark = true,
   }) : super(key: key);

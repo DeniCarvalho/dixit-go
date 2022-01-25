@@ -10,7 +10,7 @@ class AppTextStyles {
     fontWeight: FontWeight.bold,
   );
   static final TextStyle subTitle = TextStyle(
-    color: AppColors.primary,
+    color: AppColors.secundary,
     fontSize: 15.responsiveWidth,
     fontWeight: FontWeight.w400,
   );

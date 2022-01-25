@@ -8,6 +8,7 @@ class User with _$User {
   /// Creates an [User]
   const factory User({
     required String uid,
+    String? providerUId,
     required String fullName,
     required String email,
     String? phoneNumber,

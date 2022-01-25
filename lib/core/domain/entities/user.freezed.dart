@@ -20,6 +20,7 @@ class _$UserTearOff {
 
   _User call(
       {required String uid,
+      String? providerUId,
       required String fullName,
       required String email,
       String? phoneNumber,
@@ -27,6 +28,7 @@ class _$UserTearOff {
       bool emailVerified = false}) {
     return _User(
       uid: uid,
+      providerUId: providerUId,
       fullName: fullName,
       email: email,
       phoneNumber: phoneNumber,
@@ -42,6 +44,7 @@ const $User = _$UserTearOff();
 /// @nodoc
 mixin _$User {
   String get uid => throw _privateConstructorUsedError;
+  String? get providerUId => throw _privateConstructorUsedError;
   String get fullName => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String? get phoneNumber => throw _privateConstructorUsedError;
@@ -58,6 +61,7 @@ abstract class $UserCopyWith<$Res> {
       _$UserCopyWithImpl<$Res>;
   $Res call(
       {String uid,
+      String? providerUId,
       String fullName,
       String email,
       String? phoneNumber,
@@ -76,6 +80,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   @override
   $Res call({
     Object? uid = freezed,
+    Object? providerUId = freezed,
     Object? fullName = freezed,
     Object? email = freezed,
     Object? phoneNumber = freezed,
@@ -87,6 +92,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      providerUId: providerUId == freezed
+          ? _value.providerUId
+          : providerUId // ignore: cast_nullable_to_non_nullable
+              as String?,
       fullName: fullName == freezed
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
@@ -118,6 +127,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   @override
   $Res call(
       {String uid,
+      String? providerUId,
       String fullName,
       String email,
       String? phoneNumber,
@@ -137,6 +147,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   @override
   $Res call({
     Object? uid = freezed,
+    Object? providerUId = freezed,
     Object? fullName = freezed,
     Object? email = freezed,
     Object? phoneNumber = freezed,
@@ -148,6 +159,10 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      providerUId: providerUId == freezed
+          ? _value.providerUId
+          : providerUId // ignore: cast_nullable_to_non_nullable
+              as String?,
       fullName: fullName == freezed
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
@@ -177,6 +192,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 class _$_User implements _User {
   const _$_User(
       {required this.uid,
+      this.providerUId,
       required this.fullName,
       required this.email,
       this.phoneNumber,
@@ -185,6 +201,8 @@ class _$_User implements _User {
 
   @override
   final String uid;
+  @override
+  final String? providerUId;
   @override
   final String fullName;
   @override
@@ -199,7 +217,7 @@ class _$_User implements _User {
 
   @override
   String toString() {
-    return 'User(uid: $uid, fullName: $fullName, email: $email, phoneNumber: $phoneNumber, avatar: $avatar, emailVerified: $emailVerified)';
+    return 'User(uid: $uid, providerUId: $providerUId, fullName: $fullName, email: $email, phoneNumber: $phoneNumber, avatar: $avatar, emailVerified: $emailVerified)';
   }
 
   @override
@@ -208,6 +226,8 @@ class _$_User implements _User {
         (other.runtimeType == runtimeType &&
             other is _User &&
             const DeepCollectionEquality().equals(other.uid, uid) &&
+            const DeepCollectionEquality()
+                .equals(other.providerUId, providerUId) &&
             const DeepCollectionEquality().equals(other.fullName, fullName) &&
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality()
@@ -221,6 +241,7 @@ class _$_User implements _User {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(uid),
+      const DeepCollectionEquality().hash(providerUId),
       const DeepCollectionEquality().hash(fullName),
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(phoneNumber),
@@ -236,6 +257,7 @@ class _$_User implements _User {
 abstract class _User implements User {
   const factory _User(
       {required String uid,
+      String? providerUId,
       required String fullName,
       required String email,
       String? phoneNumber,
@@ -244,6 +266,8 @@ abstract class _User implements User {
 
   @override
   String get uid;
+  @override
+  String? get providerUId;
   @override
   String get fullName;
   @override

@@ -2,6 +2,7 @@ library home_module;
 
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../core/core.dart';
 import 'presentation/home_routes.dart';
 import 'presentation/view/view.dart';
 
@@ -10,7 +11,22 @@ import 'presentation/view/view.dart';
 ///
 class HomeModule extends Module {
   @override
-  final List<Bind> binds = [];
+  final List<Bind> binds = [
+    Bind.lazySingleton<IAuthApiDatasource>(
+      (di) => AuthApiDatasource(),
+    ),
+    Bind.lazySingleton<IAuthRepository>(
+      (di) => AuthRepository(di.get<IAuthApiDatasource>()),
+    ),
+    Bind.lazySingleton<CheckAuth>(
+      (di) => CheckAuth(di.get<IAuthRepository>()),
+    ),
+    Bind.lazySingleton<HomeViewModel>(
+      (di) => HomeViewModel(
+        checkAuth: di.get<CheckAuth>(),
+      ),
+    ),
+  ];
 
   @override
   final List<ModularRoute> routes = [

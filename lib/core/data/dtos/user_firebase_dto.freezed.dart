@@ -24,13 +24,15 @@ class _$UserFirebaseDtoTearOff {
 
   _UserFirebaseDto call(
       {required String uid,
+      required String providerId,
       required String displayName,
       required String email,
       required String photoURL,
-      required String? phoneNumber,
+      String? phoneNumber,
       bool emailVerified = false}) {
     return _UserFirebaseDto(
       uid: uid,
+      providerId: providerId,
       displayName: displayName,
       email: email,
       photoURL: photoURL,
@@ -50,6 +52,7 @@ const $UserFirebaseDto = _$UserFirebaseDtoTearOff();
 /// @nodoc
 mixin _$UserFirebaseDto {
   String get uid => throw _privateConstructorUsedError;
+  String get providerId => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get photoURL => throw _privateConstructorUsedError;
@@ -69,6 +72,7 @@ abstract class $UserFirebaseDtoCopyWith<$Res> {
       _$UserFirebaseDtoCopyWithImpl<$Res>;
   $Res call(
       {String uid,
+      String providerId,
       String displayName,
       String email,
       String photoURL,
@@ -88,6 +92,7 @@ class _$UserFirebaseDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? uid = freezed,
+    Object? providerId = freezed,
     Object? displayName = freezed,
     Object? email = freezed,
     Object? photoURL = freezed,
@@ -98,6 +103,10 @@ class _$UserFirebaseDtoCopyWithImpl<$Res>
       uid: uid == freezed
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      providerId: providerId == freezed
+          ? _value.providerId
+          : providerId // ignore: cast_nullable_to_non_nullable
               as String,
       displayName: displayName == freezed
           ? _value.displayName
@@ -132,6 +141,7 @@ abstract class _$UserFirebaseDtoCopyWith<$Res>
   @override
   $Res call(
       {String uid,
+      String providerId,
       String displayName,
       String email,
       String photoURL,
@@ -153,6 +163,7 @@ class __$UserFirebaseDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? uid = freezed,
+    Object? providerId = freezed,
     Object? displayName = freezed,
     Object? email = freezed,
     Object? photoURL = freezed,
@@ -163,6 +174,10 @@ class __$UserFirebaseDtoCopyWithImpl<$Res>
       uid: uid == freezed
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      providerId: providerId == freezed
+          ? _value.providerId
+          : providerId // ignore: cast_nullable_to_non_nullable
               as String,
       displayName: displayName == freezed
           ? _value.displayName
@@ -193,10 +208,11 @@ class __$UserFirebaseDtoCopyWithImpl<$Res>
 class _$_UserFirebaseDto extends _UserFirebaseDto {
   const _$_UserFirebaseDto(
       {required this.uid,
+      required this.providerId,
       required this.displayName,
       required this.email,
       required this.photoURL,
-      required this.phoneNumber,
+      this.phoneNumber,
       this.emailVerified = false})
       : super._();
 
@@ -205,6 +221,8 @@ class _$_UserFirebaseDto extends _UserFirebaseDto {
 
   @override
   final String uid;
+  @override
+  final String providerId;
   @override
   final String displayName;
   @override
@@ -219,7 +237,7 @@ class _$_UserFirebaseDto extends _UserFirebaseDto {
 
   @override
   String toString() {
-    return 'UserFirebaseDto(uid: $uid, displayName: $displayName, email: $email, photoURL: $photoURL, phoneNumber: $phoneNumber, emailVerified: $emailVerified)';
+    return 'UserFirebaseDto(uid: $uid, providerId: $providerId, displayName: $displayName, email: $email, photoURL: $photoURL, phoneNumber: $phoneNumber, emailVerified: $emailVerified)';
   }
 
   @override
@@ -228,6 +246,8 @@ class _$_UserFirebaseDto extends _UserFirebaseDto {
         (other.runtimeType == runtimeType &&
             other is _UserFirebaseDto &&
             const DeepCollectionEquality().equals(other.uid, uid) &&
+            const DeepCollectionEquality()
+                .equals(other.providerId, providerId) &&
             const DeepCollectionEquality()
                 .equals(other.displayName, displayName) &&
             const DeepCollectionEquality().equals(other.email, email) &&
@@ -242,6 +262,7 @@ class _$_UserFirebaseDto extends _UserFirebaseDto {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(uid),
+      const DeepCollectionEquality().hash(providerId),
       const DeepCollectionEquality().hash(displayName),
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(photoURL),
@@ -262,10 +283,11 @@ class _$_UserFirebaseDto extends _UserFirebaseDto {
 abstract class _UserFirebaseDto extends UserFirebaseDto {
   const factory _UserFirebaseDto(
       {required String uid,
+      required String providerId,
       required String displayName,
       required String email,
       required String photoURL,
-      required String? phoneNumber,
+      String? phoneNumber,
       bool emailVerified}) = _$_UserFirebaseDto;
   const _UserFirebaseDto._() : super._();
 
@@ -274,6 +296,8 @@ abstract class _UserFirebaseDto extends UserFirebaseDto {
 
   @override
   String get uid;
+  @override
+  String get providerId;
   @override
   String get displayName;
   @override

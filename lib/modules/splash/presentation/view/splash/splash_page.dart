@@ -42,14 +42,6 @@ class _SplashPageState extends ViewState<SplashPage, SplashViewModel>
       blur = false;
     });
     viewModel.fetch();
-
-    // await Future.delayed(const Duration(seconds: 2));
-    // Nav.navigate(HomeRoutes.home.asHomeChild);
-    // SystemChrome.restoreSystemUIOverlays();
-
-    // precacheImage(AssetImage(AppImages.background), _context).then((value) {
-
-    // });
   }
 
   @override
@@ -59,8 +51,21 @@ class _SplashPageState extends ViewState<SplashPage, SplashViewModel>
       listener: (_, state) {
         if (!state.isLoading) {
           if (state.user != null) {
-            Nav.navigate(HomeRoutes.home.asHomeChild);
-            SystemChrome.restoreSystemUIOverlays();
+            if (state.user!.avatar != null) {
+              precacheImage(
+                      Image.network(
+                        state.user!.avatar!,
+                        fit: BoxFit.cover,
+                      ).image,
+                      context)
+                  .then((value) {
+                Nav.navigate(HomeRoutes.home.asHomeChild);
+                SystemChrome.restoreSystemUIOverlays();
+              });
+            } else {
+              Nav.navigate(HomeRoutes.home.asHomeChild);
+              SystemChrome.restoreSystemUIOverlays();
+            }
           } else {
             Nav.navigate(AuthRoutes.login.asAuthRoutesChild);
             SystemChrome.restoreSystemUIOverlays();

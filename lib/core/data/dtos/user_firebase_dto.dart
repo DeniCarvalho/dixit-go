@@ -16,10 +16,11 @@ class UserFirebaseDto with _$UserFirebaseDto {
   /// Creates an [UserFirebaseDto]
   const factory UserFirebaseDto({
     required String uid,
+    required String providerId,
     required String displayName,
     required String email,
     required String photoURL,
-    required String? phoneNumber,
+    String? phoneNumber,
     @Default(false) bool emailVerified,
   }) = _UserFirebaseDto;
 
@@ -32,11 +33,17 @@ class UserFirebaseDto with _$UserFirebaseDto {
 extension UserExt on _fb.User {
   /// Maps a [_fb.User] to [User]
   User toEntity() {
+    String providerUId = providerData.isNotEmpty && providerData[0].uid != null
+        ? providerData[0].uid!
+        : '';
+    String _photoURL =
+        "https://graph.facebook.com/" + providerUId + "/picture?height=200";
     return User(
       uid: uid,
+      providerUId: providerData[0].uid,
       fullName: displayName ?? '',
       email: email ?? '',
-      avatar: photoURL,
+      avatar: _photoURL,
       phoneNumber: phoneNumber,
       emailVerified: emailVerified,
     );
