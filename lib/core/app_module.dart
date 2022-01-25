@@ -4,9 +4,8 @@ import '../modules/auth/presentation/auth_routes.dart';
 import '../modules/game/presentation/game_routes.dart';
 import '../modules/home/presentation/home_routes.dart';
 import '../modules/modules.dart';
-import '../modules/splash/data/data.dart';
-import '../modules/splash/domain/domain.dart';
 import '../modules/splash/presentation/presentation.dart';
+import 'core.dart';
 
 ///
 /// Base app module definition
@@ -14,11 +13,11 @@ import '../modules/splash/presentation/presentation.dart';
 class AppModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton<ISplashApiDatasource>(
-      (di) => SplashApiDatasource(),
+    Bind.lazySingleton<IAuthApiDatasource>(
+      (di) => AuthApiDatasource(),
     ),
     Bind.lazySingleton<IAuthRepository>(
-      (di) => AuthRepository(di.get<ISplashApiDatasource>()),
+      (di) => AuthRepository(di.get<IAuthApiDatasource>()),
     ),
     Bind.lazySingleton<CheckAuth>(
       (di) => CheckAuth(di.get<IAuthRepository>()),

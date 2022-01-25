@@ -47,6 +47,8 @@ abstract class $SplashStateCopyWith<$Res> {
           SplashState value, $Res Function(SplashState) then) =
       _$SplashStateCopyWithImpl<$Res>;
   $Res call({User? user, bool isLoading, String error});
+
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -78,6 +80,17 @@ class _$SplashStateCopyWithImpl<$Res> implements $SplashStateCopyWith<$Res> {
               as String,
     ));
   }
+
+  @override
+  $UserCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -88,6 +101,9 @@ abstract class _$SplashStateCopyWith<$Res>
       __$SplashStateCopyWithImpl<$Res>;
   @override
   $Res call({User? user, bool isLoading, String error});
+
+  @override
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc

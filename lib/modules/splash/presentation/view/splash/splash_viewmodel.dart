@@ -1,5 +1,4 @@
 import '../../../../../core/core.dart';
-import '../../../domain/domain.dart';
 import 'splash_state.dart';
 
 /// PasswordCard ViewModel

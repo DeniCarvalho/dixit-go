@@ -1,6 +1,8 @@
 export './app_main.dart';
 export './app_module.dart';
 export './app_widget.dart';
+export './data/data.dart';
+export './data/datasources/datasources.dart';
 export './domain/domain.dart';
 export './infrastructure/infrastructure.dart';
 export './presentation/presentation.dart';

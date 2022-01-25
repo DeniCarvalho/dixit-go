@@ -1,12 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../../core/core.dart';
-import '../repositories/repositories.dart';
 
 /// The usecase to get an [User]
 class CheckAuth implements UseCase<User?, NoParams> {
-  /// The repository of [OrderedCard]
+  /// The repository of [AuthRepository]
   final IAuthRepository repository;
 
   /// Creates a [CheckAuth]

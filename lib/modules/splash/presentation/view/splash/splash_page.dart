@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import '../../../../../core/core.dart';
 import '../../../../auth/presentation/auth_routes.dart';
 import '../../../../home/presentation/home_routes.dart';
-import '../../mixin/mixin.dart';
 import '../../presentation.dart';
 
 ///

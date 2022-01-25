@@ -1,10 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import '../../../models/game_model.dart';
 import '../../core.dart';
-import '../../utils/extensions/responsive_extension.dart';
 
 class DialogPlayerComponent extends StatefulWidget {
   final String title, text;

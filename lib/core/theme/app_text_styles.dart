@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../core.dart';
-import '../utils/extensions/responsive_extension.dart';
 
 class AppTextStyles {
   static final TextStyle title = GoogleFonts.breeSerif(
