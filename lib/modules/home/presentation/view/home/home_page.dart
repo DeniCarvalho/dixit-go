@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../../../../../core/core.dart';
@@ -26,12 +28,18 @@ class _HomePageState extends ViewState<HomePage, HomeViewModel> {
   static const _durationPage = Duration(milliseconds: 850);
 
   late PageController controllerPage;
+  late PageController carouselText;
+  late Timer _timer;
   //234.3333485921224
 
   @override
   void initState() {
     viewModel.fetch();
     controllerPage = PageController(
+      keepPage: true,
+      initialPage: 0,
+    );
+    carouselText = PageController(
       keepPage: true,
       initialPage: 0,
     );
@@ -42,11 +50,34 @@ class _HomePageState extends ViewState<HomePage, HomeViewModel> {
   initPage() async {
     await Future.delayed(const Duration(milliseconds: 500));
     _visible.value = true;
+    controllerCarousel();
+  }
+
+  controllerCarousel() {
+    const _duration = Duration(milliseconds: 500);
+    const _curve = Curves.ease;
+    _timer = Timer.periodic(const Duration(seconds: 8), (timer) {
+      if (carouselText.page == 0) {
+        carouselText.animateToPage(1, duration: _duration, curve: _curve);
+      } else if (carouselText.page == 1) {
+        carouselText.animateToPage(2, duration: _duration, curve: _curve);
+      } else {
+        carouselText.animateToPage(0, duration: _duration, curve: _curve);
+      }
+    });
   }
 
   @override
   void dispose() {
-    controllerPage.dispose();
+    if (_timer.isActive) {
+      _timer.cancel();
+    }
+    if (controllerPage.hasClients) {
+      controllerPage.dispose();
+    }
+    if (carouselText.hasClients) {
+      carouselText.dispose();
+    }
     super.dispose();
   }
 
@@ -84,6 +115,11 @@ class _HomePageState extends ViewState<HomePage, HomeViewModel> {
                     showJoinButton.value = true;
                     _visibleTitle.value = true;
                     _visible.value = true;
+                    carouselText = PageController(
+                      keepPage: true,
+                      initialPage: 0,
+                    );
+                    controllerCarousel();
                   });
                 },
               ),
@@ -147,7 +183,7 @@ class _HomePageState extends ViewState<HomePage, HomeViewModel> {
                 return state.user != null
                     ? AvatarComponent(
                         url: state.user!.avatar,
-                        padding: EdgeInsets.all(4.responsiveWidth),
+                        padding: EdgeInsets.all(2.responsiveWidth),
                         height: 45,
                       )
                     : Container();
@@ -160,15 +196,12 @@ class _HomePageState extends ViewState<HomePage, HomeViewModel> {
   Widget get subTitleWelcome => Container(
         width: double.infinity,
         color: Colors.transparent,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'description'.i18n(context),
-              style: AppTextStyles.subTitle,
-              textAlign: TextAlign.center,
-            ),
+        child: TextCarouselWidget(
+          controller: carouselText,
+          list: const [
+            'Bem-vindo(a)\nao Dixit Go!',
+            'A imaginação\né sua única aliada',
+            'Jogue em tempo real\ncom seus amigos',
           ],
         ),
       );
@@ -240,19 +273,7 @@ class _HomePageState extends ViewState<HomePage, HomeViewModel> {
                     children: [
                       ButtonDefaultComponent(
                         text: 'joinGame'.i18n(context).toUpperCase(),
-                        action: () {
-                          _visible.value = false;
-                          controllerPage
-                              .animateTo(
-                            0.0,
-                            duration: _durationPage,
-                            curve: Curves.ease,
-                          )
-                              .whenComplete(() {
-                            showJoinButton.value = false;
-                            _visible.value = true;
-                          });
-                        },
+                        action: viewModel.signOut,
                       ),
                     ],
                   ),
@@ -288,6 +309,7 @@ class _HomePageState extends ViewState<HomePage, HomeViewModel> {
             color: AppColors.contrastPrimary,
             backgroundColor: AppColors.light,
             action: () {
+              _timer.cancel();
               _visible.value = false;
               _visibleTitle.value = false;
               _visibleDispatch.value = false;

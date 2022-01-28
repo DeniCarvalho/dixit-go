@@ -21,9 +21,13 @@ class HomeModule extends Module {
     Bind.lazySingleton<CheckAuth>(
       (di) => CheckAuth(di.get<IAuthRepository>()),
     ),
+    Bind.lazySingleton<SignOut>(
+      (di) => SignOut(di.get<IAuthRepository>()),
+    ),
     Bind.lazySingleton<HomeViewModel>(
       (di) => HomeViewModel(
         checkAuth: di.get<CheckAuth>(),
+        signOut: di.get<SignOut>(),
       ),
     ),
   ];

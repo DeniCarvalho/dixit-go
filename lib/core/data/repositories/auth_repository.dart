@@ -19,4 +19,24 @@ class AuthRepository implements IAuthRepository {
       return Left(DataFailure.fromJson(e.data));
     }
   }
+
+  @override
+  Future<Either<DataFailure, User?>> signInFacebook() async {
+    try {
+      final user = await authApiDatasource.signInFirebaseFacebook();
+      return Right(user?.toEntity());
+    } on ServerException catch (e) {
+      return Left(DataFailure.fromJson(e.data));
+    }
+  }
+
+  @override
+  Future<Either<DataFailure, void>> signOut() async {
+    try {
+      await authApiDatasource.signOutFirebase();
+      return const Right(null);
+    } on ServerException catch (e) {
+      return Left(DataFailure.fromJson(e.data));
+    }
+  }
 }

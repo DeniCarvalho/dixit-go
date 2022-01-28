@@ -42,6 +42,7 @@ class AppModule extends Module {
     ModuleRoute(
       HomeRoutes.module,
       module: HomeModule(),
+      transition: TransitionType.fadeIn,
     ),
     ModuleRoute(
       GameRoutes.module,

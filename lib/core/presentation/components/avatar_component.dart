@@ -43,7 +43,7 @@ class AvatarComponent extends StatelessWidget {
   }
 
   Widget get _image => ClipRRect(
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.circular(8.0),
         child: url != null && url!.isNotEmpty
             ? FadeInImage.memoryNetwork(
                 placeholder: kTransparentImage,
