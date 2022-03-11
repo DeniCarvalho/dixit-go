@@ -26,7 +26,9 @@ class LoginViewModel extends ViewModel<LoginState> {
         user: user,
         error: '',
       ));
-      Nav.navigate(HomeRoutes.home.asHomeChild);
+      if (user != null) {
+        Nav.navigate(HomeRoutes.home.asHomeChild);
+      }
     });
   }
 }
